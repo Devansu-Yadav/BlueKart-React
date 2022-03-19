@@ -1,0 +1,5 @@
+/* LogOut btn disabled by default, needs to be handled in Login Page component */
+.nav-icons .btn-icon {
+    display: none;
+}
+

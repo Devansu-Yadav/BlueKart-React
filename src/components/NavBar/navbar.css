@@ -1,0 +1,138 @@
+.navbar {
+    padding: 1.5rem;
+    background-color: var(--white-color);
+    align-items: center;
+}
+
+#nav-logo {
+    margin-left: 1.5rem;
+    width: 20rem;
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.logo-txt {
+    display: inline;
+    padding-right: 0.8rem;
+}
+
+.navigation .link-active, .nav-icons .link-active {
+    color: var(--default-color);
+}
+
+.nav-items .link-active-hover:after, .nav-icon-item .link-active-hover:after {
+    border-bottom: solid 3px var(--default-color);
+}
+
+.nav-items {
+    font-size: 1.8rem;
+}
+
+.navigation {
+    flex-grow: 1;
+}
+
+.page-nav {
+    justify-content: space-between;
+}
+
+.nav-icons .nav-menu {
+    display: none;
+}
+
+.nav-items a {
+    color: var(--primary-color);
+    padding: 1rem;
+}
+
+.nav-items li:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px var(--primary-color);
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.nav-items li:hover:after {
+    transform: scaleX(0.75);
+}
+
+.nav-icons {
+    font-size: 1.6rem;
+    column-gap: 3rem;
+    margin: 0 3rem;
+}
+
+.nav-icon-item {
+    color: var(--content-lighter-text-color);
+    cursor: pointer;
+}
+
+.nav-icon-margin {
+    margin-bottom: 0.4rem;
+}
+
+.nav-icon-item:hover {
+    color: var(--primary-color);
+    transition: color 250ms ease-in-out;
+}
+
+.nav-icon-item p:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px var(--primary-color);
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.nav-icon-item:hover p:after {
+    transform: scaleX(0.9);
+}
+
+/* -----------------------------------------> Responsive CSS <------------------------------------ */
+@media only screen and (max-width: 700px) {
+    .page-nav {
+        justify-content: flex-end;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .nav-icons .nav-menu {
+        font-size: 1.8rem;
+        display: block;
+        color: var(--content-lighter-text-color);
+        padding: 0 1rem;
+    }
+
+    .nav-icons .nav-menu:hover {
+        color: var(--primary-color);
+    }
+
+    .close-nav-menu {
+        font-size: 1.8rem;
+        display: block;
+        color: var(--primary-color);
+        padding: 0 1rem;
+    }
+
+    .nav-icons {
+        column-gap: 2rem;
+        margin: 0 1rem;
+    }
+}
+
+@media only screen and (max-width: 522px) {
+    .nav-menu, .nav-items a {
+        padding: 0;
+    }
+    
+    .nav-menu, .nav-items {
+        font-size: 1.6rem;
+    }
+
+    .navigation .nav-icon-item {
+        display: none;
+    }
+}
