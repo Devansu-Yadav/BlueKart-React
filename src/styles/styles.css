@@ -32,3 +32,9 @@
     display: block;
     background-color: var(--overlay-color);
 }
+
+.overlay-priceFilterSideBar-show {
+    display: block;
+    background-color: var(--overlay-color);
+    z-index: 1;
+}

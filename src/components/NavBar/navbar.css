@@ -16,10 +16,6 @@
     padding-right: 0.8rem;
 }
 
-.navigation .link-active, .nav-icons .link-active {
-    color: var(--default-color);
-}
-
 .nav-items .link-active-hover:after, .nav-icon-item .link-active-hover:after {
     border-bottom: solid 3px var(--default-color);
 }
@@ -75,6 +71,10 @@
 .nav-icon-item:hover {
     color: var(--primary-color);
     transition: color 250ms ease-in-out;
+}
+
+.navigation .link-active, .nav-icons .link-active {
+    color: var(--default-color);
 }
 
 .nav-icon-item p:after {

@@ -1,0 +1,81 @@
+/* -------------------------------------> Product List Main comps <---------------------------- */
+.product-grid-2-column {
+    display: grid;
+    grid-template-columns: 250px 4fr;
+    grid-column-gap: 4rem;
+}
+
+.product-grid-3-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 5rem;
+    row-gap: 2rem;
+}
+
+/* ==================> Products comp <======================= */
+.products {
+    margin: 2rem 2rem 5rem 0;
+}
+
+.products .searchbar {
+    width: 95%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.product-cards {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.product-cards .zoom {
+    transition: transform 0.7s;
+}
+
+.product-cards .zoom:hover {
+    transform: scale(1.1);
+}
+
+.product-cards .card-badge {
+    line-height: 115%;
+}
+
+.product-cards .card-header {
+    font-size: 2rem;
+}
+
+.product-cards .card-title {
+    font-size: 1.8rem;
+    color: var(--content-text-color);
+}
+
+.product-cards .card .card-button {
+    border-radius: 1rem;
+    margin-left: 2rem;
+}
+
+.product-cards .card .card-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* --------------------------------------> Responsive CSS <---------------------------------- */
+@media only screen and (max-width: 560px) {
+    .main-container .pricing-filter-sidebar {
+        display: none;
+    }
+
+    .product-grid-2-column {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid-3-column {
+        justify-items: center;
+    }
+
+    .products .searchbar {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

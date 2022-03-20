@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { LogoutBtn } from "../Logout/LogoutBtn";
 import { useSidebar } from "../../common/context/SidebarContext";
 
 const NavBar = ({ linkActive }) => {
@@ -30,8 +31,8 @@ const NavBar = ({ linkActive }) => {
             <SearchBar className={{ position: "searchbar-nav" }}/>
 
             <div className="nav-icons centered-flex-row-container">
-                <button className="btn-icon btn-icon-primary logout-btn rounded-med space-M"><i className="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
-                
+                <LogoutBtn display={false} />
+
                 <Link className={`nav-icon-item centered-flex-col-container ${ linkActive === "login" ? "link-active": "" }`} to="/login">
                     <FontAwesomeIcon icon={faArrowRightToBracket} className="nav-icon-margin"/>
                     <p className={`${ linkActive === "login" ? "link-active-hover": "" }`}>Login</p>
