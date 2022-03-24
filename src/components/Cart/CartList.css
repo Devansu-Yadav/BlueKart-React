@@ -1,0 +1,128 @@
+.cart-grid-2-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    column-gap: 2rem;
+    row-gap: 3rem;
+}
+
+.cart-container {
+    width: 90%;
+    margin: 4rem auto 7rem;
+}
+
+.cart-container-heading {
+    width: 100%;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--primary-color);
+    column-gap: 2rem;
+}
+
+.cart-empty-container {
+    display: none;
+    width: 80%;
+    padding: 2rem;
+    row-gap: 1rem;
+    margin: auto auto 5rem;
+}
+
+.cart-empty-container.show {
+    display: flex;
+}
+
+.cart-empty-heading {
+    font-size: 2.4rem;
+    color: var(--default-darker-color);
+}
+
+.cart-empty-redirect-link {
+    color: var(--primary-color);
+}
+
+.cart-empty-content {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.cart-empty-img {
+    width: 35rem;
+    height: 35rem;
+}
+
+.cart {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+} 
+
+.cart-cards {
+    width: 65%;
+    justify-items: center;
+}
+
+.cart-cards.empty {
+    margin: 0;
+}
+
+.cart-cards .cartList-card-display-none {
+    display: none;
+}
+
+.cart-cards .card-header {
+    font-size: 2.2rem;
+}
+
+.cart-cards .card-title {
+    font-size: 1.8rem;
+    color: var(--content-text-color);
+}
+
+.cart-cards .card-buttons {
+    justify-content: center;
+}
+
+.cart-cards .card .card-button {
+    border-radius: 1rem;
+    width: 80%;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cart-cards .card .card-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.cart-cards .card-horizontal {
+    width: 35rem;
+}
+
+/* -------------------------------> Responsive CSS <------------------------------------- */
+@media only screen and (max-width: 750px) {
+    .cart {
+        flex-direction: column-reverse;
+        align-items: center;
+        row-gap: 7rem;
+    }
+
+    .cart-cards {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .cart-cards {
+        justify-items: normal;
+    }
+
+    .cart-cards .card-horizontal {
+        width: 30rem;
+    }
+
+    .cart-empty-img {
+        width: 30rem;
+        height: 30rem;
+    }
+}

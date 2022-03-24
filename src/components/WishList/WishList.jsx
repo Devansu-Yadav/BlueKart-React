@@ -5,7 +5,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { WishListCard } from "../Card/WishListCard";
 
 const WishList = () => {
-    const [showEmptyCart, setShowEmptyCart] = useState(false);
+    const [showEmptyWishList, setShowEmptyWishList] = useState(false);
     const [wishListItemsCount, setWishListItemsCount] = useState(0);
 
     // Initialize WishList Items Count
@@ -16,7 +16,7 @@ const WishList = () => {
 
     // Show Empty WishList if Items count is zero
     useEffect(() => {
-        !wishListItemsCount ? setShowEmptyCart(true): setShowEmptyCart(false);
+        !wishListItemsCount ? setShowEmptyWishList(true): setShowEmptyWishList(false);
     }, [wishListItemsCount]);
 
     return (
@@ -31,7 +31,7 @@ const WishList = () => {
                 </div>
 
                 {/* Empty WishList Div  */}
-                {showEmptyCart && <div className={`wishList-empty-container ${showEmptyCart ? "show": ""} centered-flex-col-container`}>
+                {showEmptyWishList && <div className={`wishList-empty-container ${showEmptyWishList ? "show": ""} centered-flex-col-container`}>
                     <h3 className="wishList-empty-heading">Your WishList is Empty</h3>
                     <p className="wishList-empty-content">
                         Add items you like to your wishlist. Review them anytime and
@@ -42,46 +42,46 @@ const WishList = () => {
                 </div> }
 
                 {/* WishList Cards  */}
-                <div className={`wishList-cards ${showEmptyCart ? "empty": ""} wishList-grid-3-column`}>
+                <div className={`wishList-cards ${showEmptyWishList ? "empty": ""} wishList-grid-3-column`}>
                     <WishListCard productData={{
                         image: "https://bluekart.netlify.app/assets/images/products/smartphone.jpg",
                         productName: "Samsung Galaxy M32",
-                        price: "₹30,999",
+                        price: 30999,
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
                     }} className="zoom" wishListItemsCountHandler={setWishListItemsCount}/>
 
                     <WishListCard productData={{
                         image: "https://bluekart.netlify.app/assets/images/products/laptop.jpg",
                         productName: "Surface Pro 8",
-                        price: "₹1,00,000",
+                        price: 100000,
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
                     }} className="zoom" wishListItemsCountHandler={setWishListItemsCount}/>
 
                     <WishListCard productData={{
                         image: "https://bluekart.netlify.app/assets/images/products/fashion-men.jpg",
                         productName: "Mens Sherwani",
-                        price: "₹9,999",
+                        price: 9999,
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
                     }} className="zoom" wishListItemsCountHandler={setWishListItemsCount}/>
 
                     <WishListCard productData={{
                         image: "https://bluekart.netlify.app/assets/images/products/fashion-3.jpg",
                         productName: "Men's jacket",
-                        price: "₹1,599",
+                        price: 1599,
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
                     }} className="zoom" wishListItemsCountHandler={setWishListItemsCount}/>
 
                     <WishListCard productData={{
                         image: "https://bluekart.netlify.app/assets/images/products/Sports-1.jpg",
                         productName: "Nike Sports Shoes",
-                        price: "₹5,099",
+                        price: 5099,
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
                     }} className="zoom" wishListItemsCountHandler={setWishListItemsCount}/>
 
                     <WishListCard productData={{
                         image: "https://bluekart.netlify.app/assets/images/products/accessories-1.jpg",
                         productName: "Boat Headphones",
-                        price: "₹3,299",
+                        price: 3299,
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
                     }} className="zoom" wishListItemsCountHandler={setWishListItemsCount}/>
                 </div>

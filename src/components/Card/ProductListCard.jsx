@@ -1,4 +1,5 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { formatProductPrice } from "../../common/helpers/priceFormatter";
 
 const ProductListCard = ({ productData, className }) => {
     return (
@@ -8,7 +9,7 @@ const ProductListCard = ({ productData, className }) => {
                 <img src={`${productData.image}`} alt={`${productData.productName}`} />
             </div>
             <div className="card-header">{productData.productName}</div>
-            <div className="card-title">{productData.price}</div>
+            <div className="card-title">{formatProductPrice(productData.price)}</div>
             <p className="card-text">
                 {productData.description}
             </p>
