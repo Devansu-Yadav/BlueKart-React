@@ -86,30 +86,14 @@ const CartList = () => {
 
                 {/* Cart Cards  */}
                 <div className="cart">
-                    <div className={`cart-cards ${showEmptyCart ? "empty": ""} cart-grid-2-column`}>
-                        <CartListCard productData={{
-                            image: cartItems[0].image,
-                            productName: cartItems[0].productName,
-                            price: cartItems[0].price
-                        }} cartListItemsCountHandler={setCartListItemsCount}/>
-
-                        <CartListCard productData={{
-                            image: cartItems[1].image,
-                            productName: cartItems[1].productName,
-                            price: cartItems[1].price
-                        }} cartListItemsCountHandler={setCartListItemsCount}/>
-
-                        <CartListCard productData={{
-                            image: cartItems[2].image,
-                            productName: cartItems[2].productName,
-                            price: cartItems[2].price
-                        }} cartListItemsCountHandler={setCartListItemsCount}/>
-
-                        <CartListCard productData={{
-                            image: cartItems[3].image,
-                            productName: cartItems[3].productName,
-                            price: cartItems[3].price
-                        }} cartListItemsCountHandler={setCartListItemsCount}/>
+                     <div className={`cart-cards ${showEmptyCart ? "empty": ""} cart-grid-2-column`}>
+                        { cartItems.map(item => 
+                            <CartListCard productData={{
+                                image: item.image,
+                                productName: item.productName,
+                                price: item.price
+                            }} cartListItemsCountHandler={setCartListItemsCount}/>
+                        )}
                     </div>
 
                     {/* Cart Bill container  */}
