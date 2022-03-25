@@ -1,0 +1,40 @@
+.searchbar {
+    flex-grow: 1;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border: 2px solid var(--primary-color);
+    margin: 0 1rem;
+    align-items: center;
+}
+
+.searchbar-below-nav {
+    display: none;
+}
+
+.input-search {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+}
+
+.searchbar .search-icon {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.input-search:focus {
+    border: none;
+}
+
+/* ----------------------------------------> Responsive CSS <-------------------------------- */
+@media only screen and (max-width: 978px) {
+    .navigation .searchbar-nav {
+        display: none;
+    }
+
+    .searchbar-below-nav {
+        display: flex;
+        width: 80%;
+        margin: 0.5rem auto;
+    }
+}
