@@ -2,7 +2,6 @@ import "./navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faCartShopping, 
-    faMagnifyingGlass, 
     faArrowRightToBracket, 
     faHeart,
     faBars 
@@ -11,9 +10,24 @@ import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { LogoutBtn } from "../Logout/LogoutBtn";
 import { useSidebar } from "../../common/context/SidebarContext";
+import { useAuth } from "../../common/context/AuthenticationContext";
+import { useUserData } from "../../common/context/UserDataContext";
+import { USER_LOGOUT } from "../../common/constants";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ linkActive }) => {
     const { setDisplaySideBar } = useSidebar();
+    const { isUserAuthenticated, setIsUserAuthenticated, setUserAuthToken } = useAuth();
+    const { userDataDispatch, initialUserData } = useUserData();
+    const navigate = useNavigate();
+
+    // Initializing User Data and Auth token when logging out
+    const logoutBtnClickHandler = () => {
+        navigate("/login");
+        setIsUserAuthenticated(false);
+        setUserAuthToken("");
+        userDataDispatch({ type: USER_LOGOUT, payload: initialUserData });
+    }
 
     return (
     <nav className="navbar flex-row-container shadow-md">
@@ -31,12 +45,12 @@ const NavBar = ({ linkActive }) => {
             <SearchBar className={{ position: "searchbar-nav" }}/>
 
             <div className="nav-icons centered-flex-row-container">
-                <LogoutBtn display={false} />
+                <LogoutBtn display={isUserAuthenticated ? true: false} onClick={logoutBtnClickHandler}/>
 
-                <Link className={`nav-icon-item centered-flex-col-container ${ linkActive === "login" ? "link-active": "" }`} to="/login">
+                {!isUserAuthenticated && <Link className={`nav-icon-item centered-flex-col-container ${ linkActive === "login" ? "link-active": "" }`} to="/login">
                     <FontAwesomeIcon icon={faArrowRightToBracket} className="nav-icon-margin"/>
                     <p className={`${ linkActive === "login" ? "link-active-hover": "" }`}>Login</p>
-                </Link>
+                </Link> }
 
                 <Link className={`nav-icon-item centered-flex-col-container ${linkActive === "wishList" ? "link-active" : "" }`} to="/wishList">
                     <FontAwesomeIcon icon={faHeart} className="nav-icon-margin"/>
