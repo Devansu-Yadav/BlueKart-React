@@ -92,7 +92,7 @@ const CartList = () => {
                                 image: item.image,
                                 productName: item.productName,
                                 price: item.price
-                            }} cartListItemsCountHandler={setCartListItemsCount}/>
+                            }} cartListItemsCountHandler={setCartListItemsCount} key={item._id}/>
                         )}
                     </div>
 

@@ -17,6 +17,10 @@
     padding: 1rem;
 }
 
+.login-form-fields {
+    width: 100%;
+}
+
 .login-input {
     width: 80%;
 }
@@ -47,6 +51,24 @@
 
 .signup-text a {
     color: var(--primary-color);
+}
+
+.input-label {
+    align-self: flex-start;
+    font-size: 1.6rem;
+    margin-left: 3rem;
+}
+
+.password-input {
+    position: relative;
+    width: 100%;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    top: 8px;
+    right: 25px;
+    padding: 1rem;
 }
 
 .password-reset-text a {
