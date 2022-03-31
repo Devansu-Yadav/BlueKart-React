@@ -17,6 +17,12 @@ const SignupForm = () => {
         showPassword ? setShowPassword(false): setShowPassword(true);
     }
 
+    // Resetting Form errors on loading Signup Form
+    useEffect(() => {
+        setIsFormError(false);
+        setFormDataErr("");
+    }, []);
+
     // Validating Form everytime before Submit
     useEffect(() => {
         if(!Object.values(signupFormData).every(val => val === '')) {
@@ -84,12 +90,7 @@ const SignupForm = () => {
                 
                 { !errorFormField && isFormError && formDataErr && <FormError />}
                 <button className="btn btn-primary signup-btn rounded-med space-S">Sign UP</button>
-                <p className="login-text space-S">Already have an account? <Link to="/login" 
-                onClick={() => {
-                    // Resetting Form errors due to unsuccessful signup before login page loads
-                    setIsFormError(false);
-                    setFormDataErr("");
-                }}>Login</Link></p>
+                <p className="login-text space-S">Already have an account? <Link to="/login">Login</Link></p>
             </form>
         </div>
     </main>

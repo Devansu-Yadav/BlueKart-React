@@ -16,7 +16,6 @@ const AuthenticationProvider = ({ children }) => {
     // To keep user logged in even after refreshing page
     useEffect(() => {
         const localStorageAuth = localStorage.getItem("authToken");
-        console.log(localStorageAuth);
         if (localStorageAuth) {
             setUserAuthToken(localStorageAuth);
             setIsUserAuthenticated(true);

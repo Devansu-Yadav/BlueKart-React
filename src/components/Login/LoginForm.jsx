@@ -1,5 +1,5 @@
 import "./LoginForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +20,12 @@ const LoginForm = () => {
     const formInputOnChangeHandler = (event) => {
         setLoginFormData({...loginFormData, [event.target.name]: event.target.value });
     }
+
+    // Resetting Form errors on loading Login Form
+    useEffect(() => {
+        setIsFormError(false);
+        setFormDataErr("");
+    }, []);
 
     return (
     <main className="main-container">
@@ -47,17 +53,9 @@ const LoginForm = () => {
                 <input type="submit" value="Log in" className="btn btn-primary login-btn rounded-med space-M" />
                 <input type="submit" value="Login As Guest" className="btn btn-primary login-btn rounded-med space-M" onClick={(event) => loginAsGuestHandler(event)}/>
                 <div className="login-form-text flex-col-container">
-                    <p className="signup-text">Don't have an account? <Link to="/signup" onClick={() => {
-                        // Resetting Form errors due to unsuccessful login before signup page loads
-                        setIsFormError(false);
-                        setFormDataErr("");
-                    }}>Create One</Link></p>
-                    
-                    <p className="password-reset-text">Forget Password? <Link to="/passwordReset" onClick={() => {
-                        // Resetting Form errors due to unsuccessful login before Password Reset page loads
-                        setIsFormError(false);
-                        setFormDataErr("");
-                    }}>Reset here</Link></p>
+                    <p className="signup-text">Don't have an account? <Link to="/signup">Create One</Link></p>
+
+                    <p className="password-reset-text">Forget Password? <Link to="/passwordReset">Reset here</Link></p>
                 </div>
             </form>
         </div>
