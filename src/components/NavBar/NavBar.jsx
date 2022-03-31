@@ -24,6 +24,7 @@ const NavBar = ({ linkActive }) => {
     // Initializing User Data and Auth token when logging out
     const logoutBtnClickHandler = () => {
         navigate("/login");
+        localStorage.setItem("authToken", "");
         setIsUserAuthenticated(false);
         setUserAuthToken("");
         userDataDispatch({ type: USER_LOGOUT, payload: initialUserData });

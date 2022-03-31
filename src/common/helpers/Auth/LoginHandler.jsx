@@ -26,23 +26,24 @@ const useLoginHandler = () => {
             const loginResponse = await axios.post("/api/auth/login", loginFormData);
             if(loginResponse.status === 200) {
                 console.log("Login successful!!");
-                console.log(loginResponse);
                 const { foundUser, encodedToken } = loginResponse.data;
-                console.log(encodedToken);
                 navigate("/productList");
-                setUserAuthToken(encodedToken);
                 localStorage.setItem("authToken", encodedToken);
+                setUserAuthToken(encodedToken);
                 setIsUserAuthenticated(true);
+                
+                // Reset Form Errors on succesful login
+                setIsFormError(false);
+                setFormDataErr("");
+
                 const cartData = await getCartData(encodedToken);
                 const wishListData = await getWishListData(encodedToken);
                 userDataDispatch({ type: USER_LOGIN, payload: {...foundUser, cart: cartData, wishList: wishListData }});
-            } else {
-                throw new Error(loginResponse.data.errors[0]);
             }
         } catch(err) {
-            console.log("loginHandler: Error in Login", err);
+            console.log("loginHandler: Error in Login", err.response.data.errors[0]);
             setIsFormError(true);
-            setFormDataErr(err.message);
+            setFormDataErr(err.response.data.errors[0]);
         }
     }
 

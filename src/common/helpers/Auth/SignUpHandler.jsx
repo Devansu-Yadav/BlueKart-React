@@ -53,7 +53,7 @@ const useSignupHandler = () => {
     
     const navigate = useNavigate();
     const [signupFormData, formDataDispatch] = useReducer(signupFormDataReducer, initialFormState);
-    const { isFormError, setFormDataErr } = useFormError();
+    const { isFormError, setIsFormError, setFormDataErr } = useFormError();
 
     const signupFormValidation = ({ firstName, lastName, email, password, confirmPassword, termsAgreed }) => {
         const signupFormError = {
@@ -61,8 +61,8 @@ const useSignupHandler = () => {
             errorMsg: ""
         }
 
-        const validationArr = [{...validateOnlyStrings(signupFormError, firstName, "First Name", 3), field: "firstName" },
-                               {...validateOnlyStrings(signupFormError, lastName, "Last Name", 3), field: "lastName" },
+        const validationArr = [{...validateOnlyStrings(signupFormError, firstName, "First Name", 2), field: "firstName" },
+                               {...validateOnlyStrings(signupFormError, lastName, "Last Name", 2), field: "lastName" },
                                {...validateEmail(signupFormError, email), field: "email" }, 
                                {...validatePassword(signupFormError, password), field: "password"}];
         
@@ -81,16 +81,20 @@ const useSignupHandler = () => {
         event.preventDefault();
         if(!isFormError) {
             try {
-                console.log(signupFormData);
                 const { firstName, lastName, email, password } = signupFormData;
                 const signupResponse = await axios.post("/api/auth/signup", { firstName, lastName, email, password });
                 if(signupResponse.status === 201) {
                     console.log("User Created successfully!!");
+                    // Reset Form Errors on succesful signup
+                    setIsFormError(false);
+                    setFormDataErr("");
+
                     navigate("/login");
                 }
             } catch(err) {
-                console.log("Error - ", err.message);
-                setFormDataErr(err.message);
+                console.log("signupHandler: Error in Signup", err.response.data.errors[0]);
+                setIsFormError(true);
+                setFormDataErr(err.response.data.errors[0]);
             }
         }
     }
