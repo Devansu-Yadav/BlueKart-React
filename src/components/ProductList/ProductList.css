@@ -59,6 +59,30 @@
     color: var(--white-color);
 }
 
+.productList-empty-container {
+    display: flex;
+    width: 80%;
+    padding: 2rem;
+    row-gap: 1rem;
+    margin: auto auto 5rem;
+}
+
+.productList-empty-heading {
+    font-size: 2.4rem;
+    text-align: center;
+    color: var(--default-darker-color);
+}
+
+.productList-empty-content {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.productList-empty-img {
+    width: 30rem;
+    height: 35rem;
+}
+
 /* --------------------------------------> Responsive CSS <---------------------------------- */
 @media only screen and (max-width: 560px) {
     .main-container .pricing-filter-sidebar {
@@ -77,5 +101,18 @@
         width: 80%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .productList-empty-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .productList-empty-heading {
+        font-size: 1.8rem;
+    }
+
+    .productList-empty-content {
+        font-size: 1.6rem;
     }
 }

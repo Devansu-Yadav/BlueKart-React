@@ -35,6 +35,13 @@ const ProductListing = () => {
                 </div>
 
                 <div className="product-cards product-grid-3-column">
+                    { !filteredProductData.length && <div className="productList-empty-container centered-flex-col-container">
+                        <h3 className="productList-empty-heading">Couldn't find products based on your filter :(</h3>
+                        <p className="productList-empty-content">
+                            Try changing the filters or Refreshing the page!
+                        </p>
+                        <img className="productList-empty-img" src="/assets/images/empty-productlist.svg" alt="Product Not found" />
+                    </div> }
                     { filteredProductData.map(product => {
                         return <ProductListCard productData={{
                             rating: product.rating,

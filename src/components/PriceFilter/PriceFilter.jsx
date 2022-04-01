@@ -100,8 +100,8 @@ const PriceFilter = () => {
                     <ul className="ulist-style-none">
                         <li className="filter-options">
                             <div className="checkbox">
-                                <label className="input-label flex-row-container" htmlFor="input-checkbox">
-                                    <input className="input-checkbox" name="electronics category" type="checkbox" 
+                                <label className="input-label flex-row-container" htmlFor="electronics-category">
+                                    <input id="electronics-category" className="input-checkbox" name="electronics category" type="checkbox" 
                                     checked={categoryFilter.Electronics}
                                     onChange={event => {
                                         if(event.target.checked) {
@@ -116,8 +116,8 @@ const PriceFilter = () => {
                         </li>
                         <li className="filter-options">
                             <div className="checkbox">
-                                <label className="input-label flex-row-container" htmlFor="input-checkbox">
-                                    <input className="input-checkbox" name="fashion category" type="checkbox" 
+                                <label className="input-label flex-row-container" htmlFor="fashion-category">
+                                    <input id="fashion-category" className="input-checkbox" name="fashion category" type="checkbox" 
                                     checked={categoryFilter.Fashion}
                                     onChange={event => {
                                         if(event.target.checked) {
@@ -132,8 +132,8 @@ const PriceFilter = () => {
                         </li>
                         <li className="filter-options">
                             <div className="checkbox">
-                                <label className="input-label flex-row-container" htmlFor="input-checkbox">
-                                    <input className="input-checkbox" name="sports category" type="checkbox" 
+                                <label className="input-label flex-row-container" htmlFor="sports-category">
+                                    <input id="sports-category" className="input-checkbox" name="sports category" type="checkbox" 
                                     checked={categoryFilter.Sports}
                                     onChange={event => {
                                         if(event.target.checked) {
@@ -148,8 +148,8 @@ const PriceFilter = () => {
                         </li>
                         <li className="filter-options">
                             <div className="checkbox">
-                                <label className="input-label flex-row-container" htmlFor="input-checkbox">
-                                    <input className="input-checkbox" name="accessories category" type="checkbox" 
+                                <label className="input-label flex-row-container" htmlFor="accessories-category">
+                                    <input id="accessories-category" className="input-checkbox" name="accessories category" type="checkbox" 
                                     checked={categoryFilter.Accessories}
                                     onChange={event => {
                                         if(event.target.checked) {
@@ -264,8 +264,8 @@ const PriceFilter = () => {
                     <ul className="ulist-style-none">
                         <li className="filter-options">
                             <div className="checkbox">
-                                <label className="input-label flex-row-container" htmlFor="input-checkbox">
-                                    <input className="input-checkbox" name="electronics category" type="checkbox" 
+                                <label className="input-label flex-row-container" htmlFor="out-of-stock">
+                                    <input id="out-of-stock" className="input-checkbox" name="electronics category" type="checkbox" 
                                     checked={includeOutOfStock.shouldIncludeOutOfStock}
                                     onChange={event => {
                                         if(event.target.checked) {
