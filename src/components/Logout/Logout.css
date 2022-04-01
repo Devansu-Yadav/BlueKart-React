@@ -1,3 +1,11 @@
 .logout-btn {
-    padding: 1rem 2rem;
+    color: var(--danger-color);
+}
+
+.logout-btn .sidebar-icon, .logout-btn .sidebar-item-txt {
+    color: var(--danger-color);
+}
+
+.logout-btn .sidebar-item-txt:after {
+    border-bottom: none;
 }

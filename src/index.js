@@ -8,6 +8,8 @@ import { PriceFilterSideBarProvider } from "./common/context/PriceFilterSideBarC
 import { AuthenticationProvider } from "./common/context/AuthenticationContext";
 import { FormErrorProvider } from "./common/context/Form-Error-Context";
 import { UserDataProvider } from "./common/context/UserDataContext";
+import { ProductsDataProvider } from "./common/context/ProductsDataContext";
+import { ProductPriceFilterProvider } from "./common/context/ProductPriceFilterContext";
 
 // Call make Server
 makeServer();
@@ -17,13 +19,17 @@ ReactDOM.render(
     <AuthenticationProvider>
       <FormErrorProvider>
         <UserDataProvider>
-          <BrowserRouter>
-            <SideBarProvider>
-              <PriceFilterSideBarProvider>
-                <App />
-              </PriceFilterSideBarProvider>
-            </SideBarProvider>
-          </BrowserRouter>
+          <ProductsDataProvider>
+            <ProductPriceFilterProvider>
+                <BrowserRouter>
+                  <SideBarProvider>
+                      <PriceFilterSideBarProvider>
+                        <App />
+                      </PriceFilterSideBarProvider>
+                  </SideBarProvider>
+                </BrowserRouter>
+              </ProductPriceFilterProvider>
+          </ProductsDataProvider>
         </UserDataProvider>
       </FormErrorProvider>
     </AuthenticationProvider>
