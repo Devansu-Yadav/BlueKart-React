@@ -36,8 +36,18 @@
     row-gap: 0.5rem;
 }
 
+.price-filter {
+    margin-left: 0.5rem;
+}
+
 .filter-heading {
     font-size: 1.8rem;
+}
+
+.filter .price-range {
+    column-gap: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 800;
 }
 
 .filter-heading, .filter .ulist-style-none {

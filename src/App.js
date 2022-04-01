@@ -17,6 +17,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/productList" element={<ProductListingPage />} />
+				<Route path="/productList/:categoryName" element={<ProductListingPage />} />
 				<Route path="/mock" element={<MockAPI />} />
 				{ !isUserAuthenticated ? 
 					<>

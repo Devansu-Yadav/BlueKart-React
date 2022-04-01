@@ -9,9 +9,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useSidebar } from "../../common/context/SidebarContext";
+import { useAuth } from "../../common/context/AuthenticationContext";
+import { LogoutBtn } from "../Logout/LogoutBtn";
 
 const SideBar = () => {
     const { displaySideBar, setDisplaySideBar } = useSidebar();
+    const { isUserAuthenticated } = useAuth();
 
     return (
         <aside className={`sidebar ${ displaySideBar ? "show": "" }`}>
@@ -32,10 +35,12 @@ const SideBar = () => {
                     <div className="sidebar-item-txt">Shop Now</div>
                 </Link>
 
-                <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/login">
+                <LogoutBtn display={isUserAuthenticated ? true: false} />
+                
+                {!isUserAuthenticated && <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/login">
                     <FontAwesomeIcon icon={faRightToBracket} className="sidebar-icon" />
                     <div className="sidebar-item-txt">Login</div>
-                </Link>
+                </Link> }
 
                 <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/wishList">
                     <FontAwesomeIcon icon={faHeart} className="sidebar-icon" />

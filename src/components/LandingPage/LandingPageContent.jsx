@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useSidebar } from "../../common/context/SidebarContext";
+import { useProductsData } from "../../common/context/ProductsDataContext";
 
 const LandingPageContent = () => {
     const { displaySideBar } = useSidebar();
+    const { categoryData } = useProductsData();
 
     return (
         <main>
@@ -48,7 +50,7 @@ const LandingPageContent = () => {
                         <div className="card space-S zoom">
                             <span className="card-badge">15% OFF</span>
                             <div className="card-img">
-                                <img src="https://bluekart.netlify.app/assets/images/electronics-sale.jpg" alt="Electronics Sale" />
+                                <img src="https://res.cloudinary.com/bluekart/image/upload/v1648712083/smartphone.webp" alt="Electronics Sale" />
                             </div>
 
                             <div className="card-header">Galaxy M32</div>
@@ -64,7 +66,7 @@ const LandingPageContent = () => {
                         <div className="card space-S zoom">
                             <span className="card-badge">45% OFF</span>
                             <div className="card-img">
-                                <img src="https://bluekart.netlify.app/assets/images/fashion-sale.jpg" alt="Fashion Sale" />
+                                <img src="https://res.cloudinary.com/bluekart/image/upload/v1648713821/fashion-sale.jpg" alt="Fashion Sale" />
                             </div>
 
                             <div className="card-header">Levis Mens T-Shirt</div>
@@ -80,7 +82,7 @@ const LandingPageContent = () => {
                         <div className="card space-S zoom">
                             <span className="card-badge">7% OFF</span>
                             <div className="card-img">
-                                <img src="https://bluekart.netlify.app/assets/images/Sports-sale.jpg" alt="Sports Sale" />
+                                <img src="https://res.cloudinary.com/bluekart/image/upload/e_bgremoval/v1648712870/Sports-1.webp" alt="Sports Sale" />
                             </div>
 
                             <div className="card-header">Mens Shoes</div>
@@ -96,7 +98,7 @@ const LandingPageContent = () => {
                         <div className="card space-S zoom">
                             <span className="card-badge">35% OFF</span>
                             <div className="card-img">
-                                <img src="https://bluekart.netlify.app/assets/images/accessories-sale.jpg" alt="Accessories Sale" />
+                                <img src="https://res.cloudinary.com/bluekart/image/upload/v1648713915/accessories-sale.webp" alt="Accessories Sale" />
                             </div>
 
                             <div className="card-header">Tint Smartwatch</div>
@@ -117,38 +119,18 @@ const LandingPageContent = () => {
                         <h1 className="categories-heading">Categories</h1>
                     </div>
                     <div className="category-cards-container flex-row-container">
-                        <Link to="/productList">
-                            <div className="card card-text-overlay space-S zoom">
-                                <div className="card-img">
-                                    <img src="https://bluekart.netlify.app/assets/images/electronics.jpg" alt="Electronics" />
-                                    <div className="card-header">Electronics</div>
+                        { categoryData.map(({ id, categoryName, image }) => {
+                            return (
+                            <Link to={`/productList/${categoryName}`} key={id}>
+                                <div className="card card-text-overlay space-S zoom">
+                                    <div className="card-img">
+                                        <img src={`${image}`} alt={`${categoryName}`} />
+                                        <div className="card-header">{categoryName}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                        <Link to="/productList">
-                            <div className="card card-text-overlay space-S zoom">
-                                <div className="card-img">
-                                    <img src="https://bluekart.netlify.app/assets/images/fashion.jpg" alt="Fashion" />
-                                    <div className="card-header">Fashion</div>
-                                </div>
-                            </div>
-                        </Link>
-                        <Link to="/productList">
-                            <div className="card card-text-overlay space-S zoom">
-                                <div className="card-img">
-                                    <img src="https://bluekart.netlify.app/assets/images/Sports.jpg" alt="Sports" />
-                                    <div className="card-header">Sports</div>
-                                </div>
-                            </div>
-                        </Link>
-                        <Link to="/productList">
-                            <div className="card card-text-overlay space-S zoom">
-                                <div className="card-img">
-                                    <img src="https://bluekart.netlify.app/assets/images/accessories.jpg" alt="Accessories" />
-                                    <div className="card-header">Accessories</div>
-                                </div>
-                            </div>
-                        </Link>
+                            </Link> 
+                            );
+                        })}
                     </div>
                 </section>
             </main>

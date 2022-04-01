@@ -21,7 +21,7 @@
     width: 100%;
 }
 
-.input-label {
+.signup-form-fields .input-label {
     align-self: flex-start;
     font-size: 1.6rem;
     margin-left: 3rem;
