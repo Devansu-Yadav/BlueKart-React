@@ -4,7 +4,7 @@ import { formatProductPrice } from "../../common/helpers/priceFormatter";
 const CartListCard = ({ productData, cartListItemsCountHandler }) => {
     const closeBtnHandler = (event) => {
         event.target.parentNode.classList.add("cartList-card-display-none");
-        cartListItemsCountHandler((cartListItemsCount) => cartListItemsCount - 1);
+        // cartListItemsCountHandler((cartListItemsCount) => cartListItemsCount - 1);
     }
 
     return (

@@ -59,6 +59,17 @@
     margin: 0 3rem;
 }
 
+.wishList-badge {
+    position: relative;
+}
+
+.wishList-badge .badge-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: -13px;
+    right: -16px;
+}
+
 .nav-icon-item {
     color: var(--content-lighter-text-color);
     cursor: pointer;

@@ -40,6 +40,10 @@
     line-height: 115%;
 }
 
+.product-cards .card-text-overlay .card-header {
+    font-size: 2.4rem;
+}
+
 .product-cards .card-header {
     font-size: 2rem;
 }
@@ -52,6 +56,10 @@
 .product-cards .card .card-button {
     border-radius: 1rem;
     margin-left: 2rem;
+}
+
+.product-cards .card .out-of-stock-btn {
+    margin-left: 0;
 }
 
 .product-cards .card .card-button:hover {

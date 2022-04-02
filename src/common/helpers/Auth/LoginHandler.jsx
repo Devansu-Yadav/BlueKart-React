@@ -36,9 +36,9 @@ const useLoginHandler = () => {
                 setIsFormError(false);
                 setFormDataErr("");
 
-                const cartData = await getCartData(encodedToken);
-                const wishListData = await getWishListData(encodedToken);
-                userDataDispatch({ type: USER_LOGIN, payload: {...foundUser, cart: cartData, wishList: wishListData }});
+                const { cart } = await getCartData(encodedToken);
+                const { wishlist } = await getWishListData(encodedToken);
+                userDataDispatch({ type: USER_LOGIN, payload: {...foundUser, cart: cart, wishList: wishlist }});
             }
         } catch(err) {
             console.log("loginHandler: Error in Login", err.response.data.errors[0]);
