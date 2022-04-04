@@ -11,10 +11,14 @@ import { Link } from "react-router-dom";
 import { useSidebar } from "../../common/context/SidebarContext";
 import { useAuth } from "../../common/context/AuthenticationContext";
 import { LogoutBtn } from "../Logout/LogoutBtn";
+import { useUserData } from "../../common/context/UserDataContext";
 
 const SideBar = () => {
     const { displaySideBar, setDisplaySideBar } = useSidebar();
     const { isUserAuthenticated } = useAuth();
+    const { userData } = useUserData();
+    const wishListItemsCount = userData.wishList.length;
+    const cartItemsCount = userData.cart.length;
 
     return (
         <aside className={`sidebar ${ displaySideBar ? "show": "" }`}>
@@ -44,12 +48,12 @@ const SideBar = () => {
 
                 <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/wishList">
                     <FontAwesomeIcon icon={faHeart} className="sidebar-icon" />
-                    <div className="sidebar-item-txt">WishList</div>
+                    <div className="sidebar-item-txt">WishList ({ wishListItemsCount })</div>
                 </Link>
 
                 <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/cart">
                     <FontAwesomeIcon icon={faCartShopping} className="sidebar-icon" />
-                    <div className="sidebar-item-txt">Cart</div>
+                    <div className="sidebar-item-txt">Cart ({ cartItemsCount })</div>
                 </Link>
             </nav>
         </aside>

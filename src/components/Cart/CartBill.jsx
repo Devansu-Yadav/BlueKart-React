@@ -4,7 +4,7 @@ import { formatProductPrice } from "../../common/helpers/priceFormatter";
 
 const CartBill = ({ cartItemsData, cartListItemsCount }) => {
     const calculateTotalPrice = (cartList) => {
-        return parseFloat(Number(cartList.reduce((totalPrice, currentItem) => currentItem.price + totalPrice, 0)).toFixed(2));
+        return parseFloat(Number(cartList.reduce((totalPrice, currentItem) => currentItem.price*currentItem.qty + totalPrice, 0)).toFixed(2));
     }
 
     const calculateTotalDeliveryPrice = (cartList) => {

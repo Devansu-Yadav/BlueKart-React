@@ -18,6 +18,7 @@ const NavBar = ({ linkActive }) => {
     const { isUserAuthenticated } = useAuth();
     const { userData } = useUserData();
     const wishListItemsCount = userData.wishList.length;
+    const cartItemsCount = userData.cart.length;
 
     return (
     <nav className="navbar flex-row-container shadow-md">
@@ -51,8 +52,10 @@ const NavBar = ({ linkActive }) => {
                 </Link>
 
                 <Link className={`nav-icon-item centered-flex-col-container ${linkActive === "cart" ? "link-active" : "" }`} to="/cart">
-                    <i className="fa-solid fa-cart-shopping"></i>
-                    <FontAwesomeIcon icon={faCartShopping} className="nav-icon-margin"/>
+                    <div className="cart-badge space-XS">
+                        <FontAwesomeIcon icon={faCartShopping} className="nav-icon-margin"/>
+                        <span className="badge-icon badge-number badge-right">{cartItemsCount}</span>
+                    </div>
                     <p className={`${linkActive === "cart" ? "link-active-hover" : ""}`}>Cart</p>
                 </Link>
                 <FontAwesomeIcon icon={faBars} className="nav-menu" onClick={() => setDisplaySideBar(true)}/>
