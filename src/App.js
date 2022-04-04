@@ -6,6 +6,7 @@ import { SignUpPage } from "./pages/SignupPage";
 import { ProductListingPage } from "./pages/ProductListingPage";
 import { WishListPage } from "./pages/WishListPage";
 import { CartPage } from "./pages/CartPage";
+import { NotFound404Page } from "./pages/NotFound404Page";
 import { MockAPI } from "./components/MockAPI/MockAPI";
 import { useAuth } from "./common/context/AuthenticationContext";
 
@@ -35,6 +36,7 @@ function App() {
 						<Route path="/cart" element={<CartPage />} />
 					</>
 				}
+				<Route path="*" element={<NotFound404Page />} />
 			</Routes>
 		</div>
 	);

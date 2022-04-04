@@ -11,10 +11,13 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { LogoutBtn } from "../Logout/LogoutBtn";
 import { useSidebar } from "../../common/context/SidebarContext";
 import { useAuth } from "../../common/context/AuthenticationContext";
+import { useUserData } from "../../common/context/UserDataContext";
 
 const NavBar = ({ linkActive }) => {
     const { setDisplaySideBar } = useSidebar();
     const { isUserAuthenticated } = useAuth();
+    const { userData } = useUserData();
+    const wishListItemsCount = userData.wishList.length;
 
     return (
     <nav className="navbar flex-row-container shadow-md">
@@ -40,9 +43,13 @@ const NavBar = ({ linkActive }) => {
                 </Link> }
 
                 <Link className={`nav-icon-item centered-flex-col-container ${linkActive === "wishList" ? "link-active" : "" }`} to="/wishList">
-                    <FontAwesomeIcon icon={faHeart} className="nav-icon-margin"/>
+                    <div className="wishList-badge space-XS">
+                        <FontAwesomeIcon icon={faHeart} className="nav-icon-margin"/>
+                        <span className="badge-icon badge-number badge-right">{wishListItemsCount}</span>
+                    </div>
                     <p className={`${ linkActive === "wishList" ? "link-active-hover" : "" }`}>WishList</p>
                 </Link>
+
                 <Link className={`nav-icon-item centered-flex-col-container ${linkActive === "cart" ? "link-active" : "" }`} to="/cart">
                     <i className="fa-solid fa-cart-shopping"></i>
                     <FontAwesomeIcon icon={faCartShopping} className="nav-icon-margin"/>

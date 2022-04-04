@@ -43,13 +43,7 @@ const ProductListing = () => {
                         <img className="productList-empty-img" src="/assets/images/empty-productlist.svg" alt="Product Not found" />
                     </div> }
                     { filteredProductData.map(product => {
-                        return <ProductListCard productData={{
-                            rating: product.rating,
-                            image: product.image,
-                            productName: product.productName,
-                            price: product.price,
-                            description: product.description
-                        }} key={product._id} className="zoom" />
+                        return <ProductListCard productData={product} key={product._id} className="zoom" outOfStock={product.isOutOfStock} />
                     })}
                 </div>
             </div>

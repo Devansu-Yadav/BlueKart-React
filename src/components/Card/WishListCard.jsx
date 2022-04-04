@@ -1,9 +1,12 @@
 import { formatProductPrice } from "../../common/helpers/priceFormatter";
+import { useProductActions } from "../../common/helpers/ProductActions";
 
-const WishListCard = ({ productData, className, wishListItemsCountHandler }) => {
+const WishListCard = ({ productData, className }) => {
+    const { toggleWishList, isItemInCart, addToCartFromWishList } = useProductActions();
+
     const closeBtnHandler = (event) => {
         event.target.parentNode.classList.add("wishList-card-display-none");
-        wishListItemsCountHandler((wishListItemsCount) => wishListItemsCount - 1);
+        toggleWishList(event, productData);
     }
 
     return (
@@ -19,7 +22,7 @@ const WishListCard = ({ productData, className, wishListItemsCountHandler }) => 
             </p>
 
             <div className="card-buttons">
-                <button className="card-button btn-outline-primary">MOVE TO CART</button>
+                <button className="card-button btn-outline-primary" onClick={(event) => addToCartFromWishList(event, productData)}>{ !isItemInCart(productData._id) ? "MOVE TO CART": "GO TO CART" }</button>
             </div>
         </div>
     );
