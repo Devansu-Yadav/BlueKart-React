@@ -29,7 +29,7 @@ const updateCartItemQuantity = async (authToken, itemId, type) => {
             return response.data;
         }
     } catch (error) {
-        console.log("updateCartItemQuantity : Error in updating item quantity in cart", error.response.data.errors[0]);
+        console.log("updateCartItemQuantity : Error in updating item quantity in cart", error.response);
     }
 }
 
@@ -44,4 +44,9 @@ const removeItemFromCart = async (authToken, itemId) => {
     }
 }
 
-export { getCartData, addItemToCart, updateCartItemQuantity, removeItemFromCart };
+// Used to calculate Total items in cart including the individual item quantities.
+const calculateTotalCartItems = (cartData) => {
+    return cartData.reduce((totalQty, currItem) => currItem.qty + totalQty, 0);
+}
+
+export { getCartData, addItemToCart, updateCartItemQuantity, removeItemFromCart, calculateTotalCartItems };

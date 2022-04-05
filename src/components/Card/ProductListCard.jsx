@@ -4,7 +4,7 @@ import { formatProductPrice } from "../../common/helpers/priceFormatter";
 import { useProductActions } from "../../common/helpers/ProductActions";
 
 const ProductListCard = ({ productData, className, outOfStock }) => {
-    const { isItemInWishList, toggleWishList } = useProductActions();
+    const { isItemInWishList, toggleWishList, addToCart, isItemInCart } = useProductActions();
 
     return (
         <div className={`card ${outOfStock ? "card-text-overlay": ""} space-S ${className}`}>
@@ -22,7 +22,7 @@ const ProductListCard = ({ productData, className, outOfStock }) => {
 
             <div className={`card-buttons ${outOfStock && "centered-flex-row-container"}`}>
                 {outOfStock ?  <button className="card-button out-of-stock-btn btn-outline-primary btn-outline-disable" disabled>OUT OF STOCK</button> 
-                : <button className="card-button btn-outline-primary">ADD TO CART</button> }
+                : <button className="card-button btn-outline-primary" onClick={(event) => addToCart(event, productData)}>{ !isItemInCart(productData._id) ? "ADD TO CART": "GO TO CART" }</button> }
                 {!outOfStock && (isItemInWishList(productData._id) ? 
                 <FavoriteIcon className="card-icon material-icon-size" onClick={(event) => toggleWishList(event, productData)} /> 
                 : <FavoriteBorderIcon className="card-icon material-icon-size" onClick={(event) => toggleWishList(event, productData)} />) }

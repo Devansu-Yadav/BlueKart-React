@@ -1,10 +1,14 @@
 import "./CartListCard.css";
 import { formatProductPrice } from "../../common/helpers/priceFormatter";
+import { useProductActions } from "../../common/helpers/ProductActions";
+import { INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY } from "../../common/constants";
 
-const CartListCard = ({ productData, cartListItemsCountHandler }) => {
+const CartListCard = ({ productData }) => {
+    const { removeCartItem, isItemInWishList, addToWishListFromCart, updateCartItemQty } = useProductActions();
+
     const closeBtnHandler = (event) => {
         event.target.parentNode.classList.add("cartList-card-display-none");
-        // cartListItemsCountHandler((cartListItemsCount) => cartListItemsCount - 1);
+        removeCartItem(event, productData._id);
     }
 
     return (
@@ -15,13 +19,13 @@ const CartListCard = ({ productData, cartListItemsCountHandler }) => {
                     <div className="card-header">{productData.productName}</div>
                     <div className="card-title">{formatProductPrice(productData.price)}</div>
                     <div className="card-quantity-btns flex-row-container">
-                        <button className="increase-qty centered-flex-row-container">+</button>
-                        <span className="qty">1</span>
-                        <button className="decrease-qty centered-flex-row-container">-</button>
+                        <button className="increase-qty centered-flex-row-container" onClick={(event) => updateCartItemQty(event, productData, INCREASE_ITEM_QUANTITY)}>+</button>
+                        <span className="qty">{ productData.qty }</span>
+                        <button className="decrease-qty centered-flex-row-container" onClick={(event) => updateCartItemQty(event, productData, DECREASE_ITEM_QUANTITY)}>-</button>
                     </div>
 
                     <div className="card-buttons">
-                        <button className="card-button btn-outline-primary">MOVE TO WISHLIST</button>
+                        <button className="card-button btn-outline-primary" onClick={(event) => addToWishListFromCart(event, productData)}>{ !isItemInWishList(productData._id) ? "MOVE TO WISHLIST": "GO TO WISHLIST" }</button>
                     </div>
                 </div>
             </div>
