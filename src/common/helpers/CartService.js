@@ -23,7 +23,6 @@ const addItemToCart = async (authToken, cartItem) => {
 }
 
 const updateCartItemQuantity = async (authToken, itemId, type) => {
-    console.log(authToken);
     try {
         const response = await axios.post(`/api/user/cart/:${itemId}`, { action: { type: type } }, { headers: { authorization: authToken }});
         if(response.status === 200) {
