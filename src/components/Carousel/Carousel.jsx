@@ -1,5 +1,4 @@
 import "./Carousel.css";
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
@@ -15,11 +14,13 @@ const Carousel = ({ children }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [paused, setPaused] = useState(false);
 
+    // handlers for Swipe functionality
     const handlers = useSwipeable({
         onSwipedLeft: () => updateIndex(activeIndex + 1),
         onSwipedRight: () => updateIndex(activeIndex - 1)
     });
 
+    // updating the Active Carousel Item index
     const updateIndex = (newIndex) => {
         if(newIndex < 0) {
             newIndex = React.Children.count(children) - 1;
