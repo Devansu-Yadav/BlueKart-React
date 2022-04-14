@@ -6,6 +6,7 @@ import { ProductListCard } from "../Card/ProductListCard";
 import { useProductPriceFilter } from "../../common/context/ProductPriceFilterContext";
 import { useParams } from "react-router-dom";
 import { fetchCategoryLabel } from "../../common/helpers/productDataFilter";
+import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { useEffect } from "react";
 
 const ProductListing = () => {
@@ -29,10 +30,7 @@ const ProductListing = () => {
 
             {/* Products Container */}
             <div className="products">
-                <div className="searchbar searchbar-in-products-list flex-row-container">
-                    <input className="input-search input-primary" type="text" placeholder="Search for products, brands and more" />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon space-M" />
-                </div>
+                <SearchBar className={{ position: "searchbar-in-products-list" }}/>
 
                 <div className="product-cards product-grid-3-column">
                     { !filteredProductData.length && <div className="productList-empty-container centered-flex-col-container">
