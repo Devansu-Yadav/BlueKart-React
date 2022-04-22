@@ -1,5 +1,5 @@
 import './FormError.css';
-import { useFormError } from '../../common/context/Form-Error-Context';
+import { useFormError } from 'common/context';
 
 const FormError = () => {
     const { formDataErr } = useFormError();

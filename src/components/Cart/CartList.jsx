@@ -1,10 +1,9 @@
 import "./CartList.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { CartListCard } from "../Card/CartListCard";
-import { CartBill } from "./CartBill";
-import { useUserData } from "../../common/context/UserDataContext";
-import { calculateTotalCartItems } from "../../common/helpers/CartService";
+import { CartListCard, CartBill } from "../index";
+import { useUserData } from "common/context";
+import { calculateTotalCartItems } from "common/helpers";
 
 const CartList = () => {
     const [showEmptyCart, setShowEmptyCart] = useState(false);

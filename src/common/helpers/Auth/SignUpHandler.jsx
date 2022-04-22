@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
 import axios from "axios";
-import { validateOnlyStrings, validateEmail, validatePassword } from "../FormValidation";
-import { useFormError } from "../../context/Form-Error-Context";
+import { validateOnlyStrings, validateEmail, validatePassword } from "../index";
+import { useFormError } from "common/context";
 
 const useSignupHandler = () => {
     const initialFormState = {

@@ -1,10 +1,10 @@
 import "./WishList.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { WishListCard } from "../Card/WishListCard";
-import { useUserData } from "../../common/context/UserDataContext";
-import { Link } from "react-router-dom";
+import { useUserData } from "common/context";
+import { WishListCard } from "../index";
 
 const WishList = () => {
     const [showEmptyWishList, setShowEmptyWishList] = useState(false);

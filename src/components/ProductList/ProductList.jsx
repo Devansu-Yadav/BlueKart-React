@@ -1,13 +1,9 @@
 import "./ProductList.css";
-import { PriceFilter } from "../PriceFilter/PriceFilter";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { ProductListCard } from "../Card/ProductListCard";
-import { useProductPriceFilter } from "../../common/context/ProductPriceFilterContext";
-import { useParams } from "react-router-dom";
-import { fetchCategoryLabel } from "../../common/helpers/productDataFilter";
-import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useProductPriceFilter } from "common/context";
+import { fetchCategoryLabel } from "common/helpers";
+import { PriceFilter, ProductListCard, SearchBar } from "../index";
 
 const ProductListing = () => {
     const { filteredProductData, categoryFilterDispatch, clearProductFilters } = useProductPriceFilter();

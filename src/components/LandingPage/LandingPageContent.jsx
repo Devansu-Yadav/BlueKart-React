@@ -1,13 +1,11 @@
 import "./LandingPageContent.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { SideBar } from "../SideBar/SideBar";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { SearchBar } from "../SearchBar/SearchBar";
-import { useSidebar } from "../../common/context/SidebarContext";
-import { useProductsData } from "../../common/context/ProductsDataContext";
-import { CarouselItem, Carousel } from "../Carousel/Carousel";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { SideBar, SearchBar } from "../index";
+import { useSidebar, useProductsData } from "common/context";
+import { CarouselItem, Carousel } from "../index";
 
 const LandingPageContent = () => {
     const { displaySideBar } = useSidebar();

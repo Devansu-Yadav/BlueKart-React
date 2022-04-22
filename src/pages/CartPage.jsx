@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
-import { NavBar } from "../components/NavBar/NavBar";
-import { SideBar } from "../components/SideBar/SideBar";
-import { Footer } from "../components/Footer/Footer";
-import { useSidebar } from "../common/context/SidebarContext";
-import { CartList } from "../components/Cart/CartList";
-import "../styles/CartPage.css";
+import { useEffect } from "react";
+import { useSidebar } from "common/context";
+import { NavBar, SideBar, Footer, CartList } from "components";
+import "styles/CartPage.css";
 
 const CartPage = () => {
     const { displaySideBar } = useSidebar();

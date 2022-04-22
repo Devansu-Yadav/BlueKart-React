@@ -1,7 +1,6 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { formatProductPrice } from "../../common/helpers/priceFormatter";
-import { useProductActions } from "../../common/helpers/ProductActions";
+import { formatProductPrice, useProductActions } from "common/helpers";
 
 const ProductListCard = ({ productData, className, outOfStock }) => {
     const { isItemInWishList, toggleWishList, addToCart, isItemInCart } = useProductActions();
@@ -11,7 +10,7 @@ const ProductListCard = ({ productData, className, outOfStock }) => {
             {!outOfStock && <span className="card-badge">⭐ {productData.rating}/5</span> }
             <div className="card-img">
                 <img src={`${productData.image}`} alt={`${productData.productName}`} />
-                { outOfStock && <div class="card-header">Out of Stock</div> }
+                { outOfStock && <div className="card-header">Out of Stock</div> }
             </div>
             <div className="card-header">{productData.productName}</div>
             <div className="card-title">{formatProductPrice(productData.price)}</div>

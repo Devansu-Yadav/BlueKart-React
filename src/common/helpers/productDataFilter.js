@@ -3,7 +3,7 @@ import {
     SELECT_FASHION_CATEGORY, 
     SELECT_SPORTS_CATEGORY,
     SELECT_ACCESSORIES_CATEGORY
-} from "../constants";
+} from "common/constants";
 
 const getMinPriceOfProducts = (productData) => {
     return productData.reduce((minPrice, currProduct) => currProduct.price < minPrice ? currProduct.price: minPrice, Number.MAX_SAFE_INTEGER);

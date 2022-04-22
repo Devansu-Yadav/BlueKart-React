@@ -1,14 +1,16 @@
-import "./styles/App.css";
+import "styles/App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { LandingPage } from "./pages/LandingPage";
-import { LoginPage } from "./pages/LoginPage";
-import { SignUpPage } from "./pages/SignupPage";
-import { ProductListingPage } from "./pages/ProductListingPage";
-import { WishListPage } from "./pages/WishListPage";
-import { CartPage } from "./pages/CartPage";
-import { NotFound404Page } from "./pages/NotFound404Page";
-import { MockAPI } from "./components/MockAPI/MockAPI";
-import { useAuth } from "./common/context/AuthenticationContext";
+import { useAuth } from "common/context";
+import { 
+	LandingPage, 
+	LoginPage, 
+	SignUpPage, 
+	ProductListingPage, 
+	WishListPage, 
+	CartPage, 
+	NotFound404Page 
+} from "pages";
+import { MockAPI } from "components";
 
 function App() {
 	const { isUserAuthenticated } = useAuth();

@@ -10,11 +10,10 @@ import {
     REMOVE_FROM_CART,
     INCREASE_ITEM_QUANTITY,
     DECREASE_ITEM_QUANTITY
-} from "../constants";
+} from "common/constants";
 
-import { getWishListData } from "../helpers/WishListService";
-import { getCartData } from "../helpers/CartService";
-import { useAuth } from "../context/AuthenticationContext";
+import { getWishListData, getCartData } from "common/helpers";
+import { useAuth } from "common/context";
 
 const UserDataContext = createContext({ 
     userData: {
