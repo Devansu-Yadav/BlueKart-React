@@ -1,0 +1,145 @@
+.carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+.inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+}
+
+.homepage-carousel-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    color: var(--lynx-white);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-control-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6%;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6%;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.carousel-prev-icon, .carousel-next-icon {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.carousel-prev-icon path, .carousel-next-icon path {
+    fill: var(--white-color);
+}
+
+.carousel-next-icon {
+    transform: rotate(180deg);
+}
+
+.carousel-bottom-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.carousel-bottom-indicators li {
+    position: relative;
+    flex: 0 1 auto;
+    width: 6rem;
+    height: 0.3rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: var(--white-color);
+}
+
+.carousel-bottom-indicators li.active {
+    background-color: var(--default-darker-color);
+}
+
+.carousel-bottom-indicators li::before {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    content: "";
+}
+
+.carousel-bottom-indicators li::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    content: "";
+}
+
+/* ---------------------------------------> Responsive CSS <---------------------------------- */
+@media only screen and (max-width: 700px) {
+    .carousel-bottom-indicators {
+        bottom: 15px;
+    }
+
+    .carousel-bottom-indicators li {
+        width: 5rem;
+        height: 0.2rem;
+    }
+
+    .carousel-prev-icon, .carousel-next-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .carousel-bottom-indicators {
+        bottom: 10px;
+    }
+
+    .carousel-bottom-indicators li {
+        width: 3rem;
+        height: 0.2rem;
+    }
+
+    .carousel-prev-icon, .carousel-next-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+

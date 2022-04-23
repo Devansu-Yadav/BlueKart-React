@@ -7,6 +7,7 @@ import { HashLink } from "react-router-hash-link";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useSidebar } from "../../common/context/SidebarContext";
 import { useProductsData } from "../../common/context/ProductsDataContext";
+import { CarouselItem, Carousel } from "../Carousel/Carousel";
 
 const LandingPageContent = () => {
     const { displaySideBar } = useSidebar();
@@ -18,6 +19,21 @@ const LandingPageContent = () => {
 
             <div className={`overlay-bg ${displaySideBar ? "overlay-show": ""}`}></div>
             <SideBar />
+
+            <Carousel>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,w_1650/v1648213445/Carousel_img-1_losvfp.jpg" alt="Electronics" />
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,w_1650/v1649832622/Carousel_img_4_ubvenz.jpg" alt="Accessories" />
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,q_auto:best,w_1650/v1649841572/Fashion-Carousel-img_kxpjh4.jpg" alt="Fashion" />
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,q_auto:best,w_1650/v1649929357/Carousel-img-sports_rjzgrb.jpg" alt="Sports" />
+                </CarouselItem>
+            </Carousel>
 
             <main className="main-container">
                 {/* Hero Section */}
