@@ -1,12 +1,9 @@
 import "./ProductList.css";
-import { PriceFilter } from "../PriceFilter/PriceFilter";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { ProductListCard } from "../Card/ProductListCard";
-import { useProductPriceFilter } from "../../common/context/ProductPriceFilterContext";
-import { useParams } from "react-router-dom";
-import { fetchCategoryLabel } from "../../common/helpers/productDataFilter";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useProductPriceFilter } from "common/context";
+import { fetchCategoryLabel } from "common/helpers";
+import { PriceFilter, ProductListCard, SearchBar } from "../index";
 
 const ProductListing = () => {
     const { filteredProductData, categoryFilterDispatch, clearProductFilters } = useProductPriceFilter();
@@ -29,10 +26,7 @@ const ProductListing = () => {
 
             {/* Products Container */}
             <div className="products">
-                <div className="searchbar searchbar-in-products-list flex-row-container">
-                    <input className="input-search input-primary" type="text" placeholder="Search for products, brands and more" />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon space-M" />
-                </div>
+                <SearchBar className={{ position: "searchbar-in-products-list" }}/>
 
                 <div className="product-cards product-grid-3-column">
                     { !filteredProductData.length && <div className="productList-empty-container centered-flex-col-container">

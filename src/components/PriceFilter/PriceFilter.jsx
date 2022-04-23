@@ -1,11 +1,9 @@
 import "./PriceFilter.css";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
-import { usePriceFilterSideBar } from "../../common/context/PriceFilterSideBarContext";
-import { formatProductPrice } from "../../common/helpers/priceFormatter";
-import { useProductPriceFilter } from "../../common/context/ProductPriceFilterContext";
-import { useProductsData } from "../../common/context/ProductsDataContext";
+import { usePriceFilterSideBar, useProductPriceFilter, useProductsData } from "common/context";
+import { formatProductPrice } from "common/helpers";
 import { 
     FOUR_STAR_AND_ABOVE, 
     THREE_STAR_AND_ABOVE, 
@@ -26,7 +24,7 @@ import {
     UNSELECT_SPORTS_CATEGORY,
     SELECT_ACCESSORIES_CATEGORY,
     UNSELECT_ACCESSORIES_CATEGORY
-} from "../../common/constants";
+} from "common/constants";
 
 const PriceFilter = () => {
     const [filterSideBarMobileDisplay, setFilterSideBarMobileDisplay] = useState(false);

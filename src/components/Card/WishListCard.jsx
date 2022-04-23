@@ -1,5 +1,4 @@
-import { formatProductPrice } from "../../common/helpers/priceFormatter";
-import { useProductActions } from "../../common/helpers/ProductActions";
+import { useProductActions, formatProductPrice } from "common/helpers";
 
 const WishListCard = ({ productData, className }) => {
     const { toggleWishList, isItemInCart, addToCartFromWishList } = useProductActions();

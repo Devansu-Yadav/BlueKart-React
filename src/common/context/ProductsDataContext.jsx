@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
-import { getMinPriceOfProducts, getMaxPriceOfProducts } from "../helpers/productDataFilter";
+import { getMinPriceOfProducts, getMaxPriceOfProducts } from "common/helpers";
 
 const ProductsDataContext = createContext({ 
     productsData: [], 

@@ -1,4 +1,5 @@
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
     faXmark, 
@@ -7,11 +8,8 @@ import {
     faRightToBracket,
     faHeart 
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { useSidebar } from "../../common/context/SidebarContext";
-import { useAuth } from "../../common/context/AuthenticationContext";
-import { LogoutBtn } from "../Logout/LogoutBtn";
-import { useUserData } from "../../common/context/UserDataContext";
+import { useSidebar, useAuth, useUserData } from "common/context";
+import { LogoutBtn } from "../index";
 
 const SideBar = () => {
     const { displaySideBar, setDisplaySideBar } = useSidebar();

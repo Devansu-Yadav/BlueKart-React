@@ -1,12 +1,12 @@
 import { useState, useReducer, useEffect, useContext, createContext } from "react";
-import { useProductsData } from "../context/ProductsDataContext";
+import { useProductsData } from "./index";
 import { 
     filterProductsInPriceRange, 
     filterProductsByRating,
     filterProductsByCategory,
     sortProductsFilter, 
     outOfStockFilter 
-} from "../helpers/productDataFilter";
+} from "common/helpers";
 
 import { 
     FOUR_STAR_AND_ABOVE, 

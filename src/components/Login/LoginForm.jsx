@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
-import { useLoginHandler } from "../../common/helpers/Auth/LoginHandler";
-import { FormError } from "../FormError/FormError";
-import { useFormError } from "../../common/context/Form-Error-Context";
+import { useLoginHandler } from "common/helpers";
+import { useFormError } from "common/context";
+import { FormError } from "../index";
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);

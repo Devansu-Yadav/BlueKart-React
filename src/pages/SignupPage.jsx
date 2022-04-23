@@ -1,10 +1,7 @@
 import { useEffect } from "react";
-import { NavBar } from "../components/NavBar/NavBar";
-import { Footer } from "../components/Footer/Footer";
-import { SideBar } from "../components/SideBar/SideBar";
-import { SignupForm } from "../components/Signup/SignupForm";
-import { useSidebar } from "../common/context/SidebarContext";
-import "../styles/SignupPage.css";
+import { useSidebar } from "common/context";
+import { NavBar, Footer, SideBar, SignupForm } from "components";
+import "styles/SignupPage.css";
 
 const SignUpPage = () => {
     const { displaySideBar } = useSidebar();

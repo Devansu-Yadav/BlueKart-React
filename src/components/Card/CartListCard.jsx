@@ -1,7 +1,6 @@
 import "./CartListCard.css";
-import { formatProductPrice } from "../../common/helpers/priceFormatter";
-import { useProductActions } from "../../common/helpers/ProductActions";
-import { INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY } from "../../common/constants";
+import { formatProductPrice, useProductActions } from "common/helpers";
+import { INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY } from "common/constants";
 
 const CartListCard = ({ productData }) => {
     const { removeCartItem, isItemInWishList, addToWishListFromCart, updateCartItemQty } = useProductActions();

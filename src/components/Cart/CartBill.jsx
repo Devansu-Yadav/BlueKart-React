@@ -1,6 +1,6 @@
 import "./CartBill.css";
 import { HashLink } from "react-router-hash-link";
-import { formatProductPrice } from "../../common/helpers/priceFormatter";
+import { formatProductPrice } from "common/helpers";
 
 const CartBill = ({ cartItemsData, cartListItemsCount }) => {
     const calculateTotalPrice = (cartList) => {

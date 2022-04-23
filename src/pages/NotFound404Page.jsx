@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { NavBar } from "../components/NavBar/NavBar";
-import { Footer } from "../components/Footer/Footer";
-import { SideBar } from "../components/SideBar/SideBar";
-import { useSidebar } from "../common/context/SidebarContext";
-import "../styles/NotFound404Page.css";
+import { useSidebar } from "common/context";
+import { NavBar, Footer, SideBar } from "components";
+import "styles/NotFound404Page.css";
 
 const NotFound404Page = () => {
     const { displaySideBar } = useSidebar();

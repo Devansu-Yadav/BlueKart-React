@@ -83,14 +83,16 @@
     .pricing-filter-sidebar-small-screen {
         display: flex;
         align-items: center;
-        align-items: center;
         z-index: 2;
         -webkit-transform: translateX(-90%);
         -ms-transform: translateX(-90%);
         transform: translateX(-90%);
         transition: -webkit-transform 0.5s ease;
         transition: transform 0.5s ease;
-        height: 120vh;
+    }
+
+    .pricing-nav {
+        align-self: flex-start;
     }
 
     .pricing-filter-sidebar-small-screen .pricing-nav {
@@ -98,9 +100,9 @@
     }
 
     .pricing-filter-sidebar-small-screen.filter-show {
-        -webkit-transform: translateX(-8%) translateY(-8%) scaleX(0.85) scaleY(0.85);
-        -ms-transform: translateX(-8%) translateY(-8%) scaleX(0.85) scaleY(0.85);
-        transform: translateX(-8%) translateY(-8%) scaleX(0.85) scaleY(0.85);
+        -webkit-transform: translateX(-4%);
+        -ms-transform: translateX(-4%);
+        transform: translateX(-4%);
     }
 
     .filters-slider-comp {

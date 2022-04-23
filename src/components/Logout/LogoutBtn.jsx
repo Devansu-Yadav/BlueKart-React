@@ -1,11 +1,10 @@
 import "./Logout.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { useUserData } from "../../common/context/UserDataContext";
-import { USER_LOGOUT } from "../../common/constants";
-import { useAuth } from "../../common/context/AuthenticationContext";
+import { useUserData, useAuth } from "common/context";
+import { USER_LOGOUT } from "common/constants";
 
 const LogoutBtn = ({ display }) => {
     const { userDataDispatch, initialUserData } = useUserData();

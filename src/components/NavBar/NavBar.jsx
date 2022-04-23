@@ -7,11 +7,8 @@ import {
     faBars 
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { SearchBar } from "../SearchBar/SearchBar";
-import { LogoutBtn } from "../Logout/LogoutBtn";
-import { useSidebar } from "../../common/context/SidebarContext";
-import { useAuth } from "../../common/context/AuthenticationContext";
-import { useUserData } from "../../common/context/UserDataContext";
+import { SearchBar, LogoutBtn } from "../index";
+import { useSidebar, useAuth, useUserData } from "common/context";
 
 const NavBar = ({ linkActive }) => {
     const { setDisplaySideBar } = useSidebar();

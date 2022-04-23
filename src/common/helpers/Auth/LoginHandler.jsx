@@ -1,12 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useFormError } from "../../context/Form-Error-Context";
-import { useAuth } from "../../context/AuthenticationContext";
-import { useUserData } from "../../context/UserDataContext";
-import { getCartData } from "../CartService";
-import { getWishListData } from "../WishListService";
-import { USER_LOGIN } from "../../constants";
+import { useFormError, useAuth, useUserData } from "common/context";
+import { getCartData, getWishListData } from "../index";
+import { USER_LOGIN } from "common/constants";
 
 const useLoginHandler = () => {
     const initialFormState = {
