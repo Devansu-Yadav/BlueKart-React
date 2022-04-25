@@ -31,7 +31,7 @@ const LogoutBtn = ({ display }) => {
     return (
         display && <Link className={`nav-icon-item ${windowWidth <= 522 ? "sidebar-item centered-flex-row-container space-S rounded-med": "centered-flex-col-container" } logout-btn`} onClick={logoutBtnClickHandler} to="/login">
             <FontAwesomeIcon icon={faArrowRightFromBracket} className={`${windowWidth <= 522 ? "sidebar-icon ": "nav-icon-margin" }`} />
-            <p className={`${windowWidth <= 522 ? "sidebar-item-txt": ""}`}>Logout</p>
+            <div className={`${windowWidth <= 522 ? "sidebar-item-txt": ""}`}>Logout</div>
         </Link>
     );
 }
