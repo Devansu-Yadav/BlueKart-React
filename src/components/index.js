@@ -17,6 +17,7 @@ import { SideBar } from "./SideBar/SideBar";
 import { SignupForm } from "./Signup/SignupForm";
 import { WishList } from "./WishList/WishList";
 import { CarouselItem, Carousel } from "./Carousel/Carousel";
+import { ProfilePageContent } from "./ProfilePage/ProfilePageContent";
 
 export {
     CartListCard,
@@ -38,5 +39,6 @@ export {
     SignupForm,
     WishList,
     CarouselItem,
-    Carousel
+    Carousel,
+    ProfilePageContent
 };

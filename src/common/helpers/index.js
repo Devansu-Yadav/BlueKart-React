@@ -1,4 +1,5 @@
 export { useLoginHandler } from "./Auth/LoginHandler";
+export { useLogoutHandler } from "./Auth/LogoutHandler";
 export { useSignupHandler } from "./Auth/SignUpHandler";
 export {
     getCartData, 
@@ -31,3 +32,4 @@ export {
 } from "./productDataFilter";
 
 export { getWishListData, addItemToWishList, removeItemFromWishList } from "./WishListService";
+export { getUserData } from "./AccountService";

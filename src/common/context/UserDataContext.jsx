@@ -12,7 +12,7 @@ import {
     DECREASE_ITEM_QUANTITY
 } from "common/constants";
 
-import { getWishListData, getCartData } from "common/helpers";
+import { getUserData, getWishListData, getCartData } from "common/helpers";
 import { useAuth } from "common/context";
 
 const UserDataContext = createContext({ 
@@ -98,18 +98,23 @@ const UserDataProvider = ({ children }) => {
     
     const [userData, userDataDispatch] = useReducer(userDataReducer, initialUserData);
 
-    // Fetch User WishList and Cart initially
+    // Fetch User account Data along with WishList and Cart initially
     useEffect(() => {
-        const saveUserWishListAndCart = async () => {
+        const saveUserDataWithWishListAndCart = async () => {
             if(userAuthToken) {
                 const { wishlist } = await getWishListData(userAuthToken);
                 const { cart } = await getCartData(userAuthToken);
+
+                (async (authToken) => {
+                    const userAccountData = await getUserData(authToken);
+                    userDataDispatch({ type: USER_LOGIN, payload: {...userAccountData.userData }});
+                })(userAuthToken);
 
                 userDataDispatch({ type: SAVE_USER_WISHLIST, payload: wishlist });
                 userDataDispatch({ type: SAVE_USER_CART, payload: cart });                
             }
         }
-        saveUserWishListAndCart();
+        saveUserDataWithWishListAndCart();
     }, [userAuthToken]);
 
     return (

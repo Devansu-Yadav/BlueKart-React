@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import { NavBar } from "../components/NavBar/NavBar";
-import { Footer } from "../components/Footer/Footer";
+import { NavBar, SideBar, Footer, ProfilePageContent } from "../components";
+import { useSidebar } from "common/context";
 import "../styles/ProfilePage.css";
 
 const ProfilePage = () => {
+    const { displaySideBar } = useSidebar();
+
     // Updating title on rendering Profile Page comp
     useEffect(() => {
         document.title = "BlueKart - Profile";
@@ -12,6 +14,9 @@ const ProfilePage = () => {
     return (
         <div>
             <NavBar linkActive="profile" />
+            <div className={`overlay-bg ${displaySideBar ? "overlay-show": ""}`}></div>
+            <ProfilePageContent />
+            <SideBar />
             <Footer />
         </div>
     );

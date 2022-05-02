@@ -1,0 +1,36 @@
+.tabs-fixed {
+    width: 45%;
+}
+
+.tabs {
+    justify-content: flex-start;
+    border: 1px solid var(--black);
+}
+
+.tab {
+    flex-grow: 1;
+    padding: 2rem 1rem;
+    max-height: 60px;
+}
+
+.tabs-no-icons-fixed .tab i {
+    display: none;
+}
+
+.tab:hover {
+    background-color: var(--hover-color);
+}
+
+.tab:focus {
+    border-bottom: 2px solid var(--primary-darker-color);
+    background-color: var(--tabs-bg-color);
+}
+
+.tab-txt {
+    font-size: 2rem;
+    color: var(--default-color);
+}
+
+.tab:focus .tab-txt {
+    color: var(--primary-darker-color);
+}

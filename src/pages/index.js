@@ -5,6 +5,7 @@ import { NotFound404Page } from "./NotFound404Page";
 import { ProductListingPage } from "./ProductListingPage";
 import { SignUpPage } from "./SignupPage";
 import { WishListPage } from "./WishListPage";
+import { ProfilePage } from "./ProfilePage";
 
 export {
     CartPage,
@@ -13,5 +14,6 @@ export {
     NotFound404Page,
     ProductListingPage,
     SignUpPage,
-    WishListPage
+    WishListPage,
+    ProfilePage
 };

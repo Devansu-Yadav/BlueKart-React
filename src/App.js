@@ -8,7 +8,8 @@ import {
 	ProductListingPage, 
 	WishListPage, 
 	CartPage, 
-	NotFound404Page 
+	NotFound404Page,
+	ProfilePage
 } from "pages";
 import { MockAPI } from "components";
 
@@ -29,6 +30,7 @@ function App() {
 						<Route path="/passwordReset" element={<Navigate to="/login" />} />
 						<Route path="/wishList" element={<Navigate to="/login" />} />
 						<Route path="/cart" element={<Navigate to="/login" />} />
+						<Route path="/account" element={<Navigate to="/login" />} />
 					</> :
 					<>
 						<Route path="/login" element={<Navigate to="/" />} />
@@ -36,6 +38,7 @@ function App() {
 						<Route path="/passwordReset" element={<LandingPage />} />
 						<Route path="/wishList" element={<WishListPage />} />
 						<Route path="/cart" element={<CartPage />} />
+						<Route path="/account" element={<ProfilePage />} />
 					</>
 				}
 				<Route path="*" element={<NotFound404Page />} />

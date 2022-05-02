@@ -22,6 +22,9 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
+import {
+  getUserProfileData
+} from "./backend/controllers/UserAccountController";
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -85,6 +88,9 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+
+      // user account routes (private)
+      this.get("/user/account", getUserProfileData.bind(this));
     },
   });
 }

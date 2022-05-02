@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { useUserData, useAuth } from "common/context";
-import { USER_LOGOUT } from "common/constants";
+import { useLogoutHandler } from "common/helpers";
 
 const LogoutBtn = ({ display }) => {
-    const { userDataDispatch, initialUserData } = useUserData();
-    const { setIsUserAuthenticated, setUserAuthToken } = useAuth();
+    const { logoutHandler } = useLogoutHandler();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     // Handling Logout btn on Mobile devices
@@ -22,10 +20,7 @@ const LogoutBtn = ({ display }) => {
 
     // Initializing User Data and Auth token when logging out
     const logoutBtnClickHandler = () => {
-        localStorage.setItem("authToken", "");
-        setIsUserAuthenticated(false);
-        setUserAuthToken("");
-        userDataDispatch({ type: USER_LOGOUT, payload: initialUserData });
+        logoutHandler();
     }
 
     return (
