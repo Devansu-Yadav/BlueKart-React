@@ -119,7 +119,8 @@ const UserDataProvider = ({ children }) => {
 
                 // Fetch all the user account Data including Addresses
                 const userAccountData = await getUserData(userAuthToken);
-                userDataDispatch({ type: USER_LOGIN, payload: {...userAccountData.userData }});
+                const { _id, firstName, lastName, email, password, addresses } = userAccountData.userData;
+                userDataDispatch({ type: USER_LOGIN, payload: { _id, firstName, lastName, email, password, addresses }});
 
                 userDataDispatch({ type: SAVE_USER_WISHLIST, payload: wishlist });
                 userDataDispatch({ type: SAVE_USER_CART, payload: cart }); 
