@@ -25,6 +25,12 @@ import {
 import {
   getUserProfileData
 } from "./backend/controllers/UserAccountController";
+import {
+  getAddresses,
+  addAddress,
+  removeAddress,
+  updateAddress
+} from "./backend/controllers/UserAddressController";
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -52,7 +58,7 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", { ...item, cart: [], wishlist: [], addresses: [] })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -91,6 +97,12 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user account routes (private)
       this.get("/user/account", getUserProfileData.bind(this));
+
+      // user address routes (private)
+      this.get("/user/account/addresses", getAddresses.bind(this));
+      this.post("/user/account/addresses", addAddress.bind(this));
+      this.post("/user/account/addresses/:addressId", updateAddress.bind(this));
+      this.delete("/user/account/addresses/:addressId", removeAddress.bind(this));
     },
   });
 }

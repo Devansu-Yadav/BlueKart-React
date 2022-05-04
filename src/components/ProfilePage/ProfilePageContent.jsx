@@ -12,9 +12,9 @@ const ProfilePageContent = () => {
     const { logoutHandler } = useLogoutHandler();
 
     return (
-        <div>
-            <div className="profile-page-content-container centered-flex-col-container">
-                <ProfilePageTabs />
+        <div className="profile-page-container">
+            <div className="profile-page-content centered-flex-col-container">
+                <ProfilePageTabs activeTab="profile" />
                 <div className="profile-details-container centered-flex-row-container space-L">
                     <div className="profile-details flex-col-container">
                         <h2 className="account-details-heading">Account Details</h2>

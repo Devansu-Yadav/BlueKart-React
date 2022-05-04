@@ -1,0 +1,137 @@
+.address-page-container {
+	min-height: 75vh;
+}
+
+.address-page-content {
+    width: 80%;
+    padding: 6rem 2rem 4rem 2rem;
+    row-gap: 1rem;
+    margin: auto auto 5rem;
+}
+
+.add-address {
+	color: var(--primary-darker-color);
+	border: 2px solid var(--primary-color);
+	width: 45%;
+	min-width: 340px;
+	align-items: center;
+	margin-top: 4rem;
+}
+
+.add-address-icon {
+	font-size: 1.6rem;
+	width: 3rem;
+	margin: 0 1rem;
+}
+
+.add-address-heading {
+	color: var(--primary-color);
+	padding: 0.5rem 0;
+}
+
+.address-list {
+	width: 45%;
+	min-width: 340px;
+}
+
+.address-list .no-addresses-heading {
+	text-align: center;
+}
+
+.address-card {
+	text-align: left;
+	font-size: 1.6rem;
+	width: 100%;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 1.5rem auto;
+	border: 2px solid var(--hover-color);
+}
+
+.name-phone-no-container, .state-city-container, .address-txt-container {
+	margin: 1rem 1rem 0.5rem 1.5rem;
+	font-weight: 500;
+	column-gap: 2rem;
+	flex-wrap: wrap;
+	row-gap: 1rem;
+}
+
+.address-field-labels {
+	color: var(--primary-darker-color);
+	background-color: var(--white-color);
+}
+
+.address-list-btns {
+	margin: 1rem 1rem 1rem 1.5rem;
+	column-gap: 1rem;
+}
+
+.address-list-btns .btn {
+	padding: 0.7rem 5rem;
+}
+
+.address-input-form {
+	width: 45%;
+	min-width: 340px;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 0px 10px var(--gray-color);
+	padding: 1rem 0;
+	margin-top: 3rem;
+	border-radius: 1rem;
+}
+
+.address-edit-form {
+	width: 100%;
+	margin: 0;
+}
+
+.form-Row {
+	display: flex;
+	width: 96%;
+	flex-wrap: wrap;
+	padding: 1rem 0;
+}
+
+.horizontally-centered-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form-item {
+	font-size: 1.4rem;
+	flex-grow: 1;
+	flex-basis: 0;
+}
+
+.form-input-field {
+	width: 85%;
+}
+
+.form-item .input-error:focus {
+	border: 1px solid var(--danger-color);
+}
+
+.form-text-area {
+	width: 93%;
+	resize: none;
+}
+
+.form-input-field, .form-text-area, .form-select-field {
+	border-radius: 0.3rem;
+}
+
+.form-select-field {
+	width: 92%;
+}
+
+.form-item .form-error {
+	font-size: 1.4rem;
+	padding: 0.5rem 1rem;
+}
+
+.error {
+	color: var(--danger-color);
+	font-size: 1.6rem;
+}

@@ -9,7 +9,10 @@ import {
     ADD_TO_CART,
     REMOVE_FROM_CART,
     INCREASE_ITEM_QUANTITY,
-    DECREASE_ITEM_QUANTITY
+    DECREASE_ITEM_QUANTITY,
+    ADD_USER_ADDRESS,
+    UPDATE_USER_ADDRESS,
+    REMOVE_USER_ADDRESS
 } from "common/constants";
 
 import { getUserData, getWishListData, getCartData } from "common/helpers";
@@ -23,7 +26,8 @@ const UserDataContext = createContext({
         email: "",
         password: "",
         cart: [],
-        wishList: []
+        wishList: [],
+        addresses: []
     }, 
     userDataDispatch: () => {}
 });
@@ -40,7 +44,8 @@ const UserDataProvider = ({ children }) => {
         email: "",
         password: "",
         cart: [],
-        wishList: []
+        wishList: [],
+        addresses: []
     }
 
     const userDataReducer = (state, action) => {
@@ -91,6 +96,13 @@ const UserDataProvider = ({ children }) => {
                     ...state,
                     cart: [...state.cart.reduce((updatedCart, currItem) => currItem._id === action.payload._id ? [...updatedCart, {...currItem, qty: currItem.qty - 1 }]: [...updatedCart, currItem], [])]
                 }
+            case ADD_USER_ADDRESS:
+            case UPDATE_USER_ADDRESS:
+            case REMOVE_USER_ADDRESS:
+                return {
+                    ...state,
+                    addresses: [...action.payload]
+                }
             default:
                 return {...state}
         }
@@ -105,13 +117,12 @@ const UserDataProvider = ({ children }) => {
                 const { wishlist } = await getWishListData(userAuthToken);
                 const { cart } = await getCartData(userAuthToken);
 
-                (async (authToken) => {
-                    const userAccountData = await getUserData(authToken);
-                    userDataDispatch({ type: USER_LOGIN, payload: {...userAccountData.userData }});
-                })(userAuthToken);
+                // Fetch all the user account Data including Addresses
+                const userAccountData = await getUserData(userAuthToken);
+                userDataDispatch({ type: USER_LOGIN, payload: {...userAccountData.userData }});
 
                 userDataDispatch({ type: SAVE_USER_WISHLIST, payload: wishlist });
-                userDataDispatch({ type: SAVE_USER_CART, payload: cart });                
+                userDataDispatch({ type: SAVE_USER_CART, payload: cart }); 
             }
         }
         saveUserDataWithWishListAndCart();

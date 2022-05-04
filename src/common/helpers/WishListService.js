@@ -13,7 +13,7 @@ const getWishListData = async (authToken) => {
 
 const addItemToWishList = async (authToken, wishListItem) => {
     try {
-        const response = await axios.post("/api/user/wishlist", wishListItem, { headers: { authorization: authToken }});
+        const response = await axios.post("/api/user/wishlist", { product: wishListItem }, { headers: { authorization: authToken }});
         if(response.status === 201) {
             return response.data;
         } 
@@ -24,7 +24,7 @@ const addItemToWishList = async (authToken, wishListItem) => {
 
 const removeItemFromWishList = async (authToken, itemId) => {
     try {
-        const response = await axios.delete(`/api/user/wishlist/:${itemId}`, { headers: { authorization: authToken }});
+        const response = await axios.delete(`/api/user/wishlist/${itemId}`, { headers: { authorization: authToken }});
         if(response.status === 200) {
             return response.data;
         }

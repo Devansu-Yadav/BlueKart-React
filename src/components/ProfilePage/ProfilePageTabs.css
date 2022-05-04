@@ -1,10 +1,11 @@
 .tabs-fixed {
     width: 45%;
+    min-width: 320px;
 }
 
 .tabs {
     justify-content: flex-start;
-    border: 1px solid var(--black);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .tab {
@@ -17,12 +18,15 @@
     display: none;
 }
 
+.tab-active {
+    background-color: var(--tabs-bg-color);
+}
+
 .tab:hover {
     background-color: var(--hover-color);
 }
 
 .tab:focus {
-    border-bottom: 2px solid var(--primary-darker-color);
     background-color: var(--tabs-bg-color);
 }
 

@@ -42,7 +42,7 @@ const validateAltMobileNo = (formError, mobNo, altMobNo) => {
     if(mobNo === altMobNo) {
         return {...formError, isError: true, errorMsg: "Alt Mob No cannot be same as Primary Mob No!" };
     }
-    return validateMobileNo(altMobNo);    
+    return validateMobileNo(formError, altMobNo);  
 }
 
 const validatePinCode = (formError, pinCode) => {
@@ -54,4 +54,22 @@ const validatePinCode = (formError, pinCode) => {
     return {...formError, isError: pinCodeRegExp.test(pinCode) && pinCode.length === 6 ? false: true, errorMsg: "Invalid Pincode!!" }; 
 }
 
-export { validateOnlyStrings, validateEmail, validatePassword, validateMobileNo, validateAltMobileNo, validatePinCode };
+const addressFormValidation = ({ name, city, state, mobile_no, alt_mobile_no, pincode }) => {
+    const formError = {
+        isError: false,
+        errorMsg: ""
+    };
+
+    const validationArr = [ {...validateOnlyStrings(formError, name, "name"), field: "name" }, 
+                            {...validateMobileNo(formError, mobile_no), field: "mobile_no"}, 
+                            {...validatePinCode(formError, pincode), field: "pincode"}, 
+                            {...validateOnlyStrings(formError, city), field: "city" }, 
+                            {...validateOnlyStrings(formError, state), field: "state" } ];
+    
+    if(alt_mobile_no.length) {
+        validationArr.push({...validateAltMobileNo(formError, mobile_no, alt_mobile_no), field: "alt_mobile_no"});
+    }
+    return validationArr.reduce((acc, currFormObj) => currFormObj.isError ? [...acc, currFormObj]: [...acc], []);
+}
+
+export { validateOnlyStrings, validateEmail, validatePassword, validateMobileNo, validateAltMobileNo, validatePinCode, addressFormValidation };

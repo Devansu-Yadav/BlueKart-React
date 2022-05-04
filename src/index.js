@@ -10,7 +10,8 @@ import {
   FormErrorProvider,
   UserDataProvider,
   ProductsDataProvider,
-  ProductPriceFilterProvider
+  ProductPriceFilterProvider,
+  AddressFormProvider
 } from "common/context";
 
 // Call make Server
@@ -19,21 +20,23 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <AuthenticationProvider>
-      <FormErrorProvider>
-        <UserDataProvider>
-          <ProductsDataProvider>
-            <ProductPriceFilterProvider>
-                <BrowserRouter>
-                  <SideBarProvider>
-                      <PriceFilterSideBarProvider>
-                        <App />
-                      </PriceFilterSideBarProvider>
-                  </SideBarProvider>
-                </BrowserRouter>
-              </ProductPriceFilterProvider>
-          </ProductsDataProvider>
-        </UserDataProvider>
-      </FormErrorProvider>
+      <AddressFormProvider>
+        <FormErrorProvider>
+          <UserDataProvider>
+            <ProductsDataProvider>
+              <ProductPriceFilterProvider>
+                  <BrowserRouter>
+                    <SideBarProvider>
+                        <PriceFilterSideBarProvider>
+                          <App />
+                        </PriceFilterSideBarProvider>
+                    </SideBarProvider>
+                  </BrowserRouter>
+                </ProductPriceFilterProvider>
+            </ProductsDataProvider>
+          </UserDataProvider>
+        </FormErrorProvider>
+      </AddressFormProvider>
     </AuthenticationProvider>
   </React.StrictMode>,
   document.getElementById("root")
