@@ -43,8 +43,8 @@ const ProductListing = () => {
                         className="spinning-loader"
                         type="spin"
                         color="#008FF5"
-                        height={100}
-                        width={100}
+                        height={80}
+                        width={80}
                     /> ): (
                         <div className="product-cards product-grid-3-column">
                             { !filteredProductData.length && <div className="productList-empty-container centered-flex-col-container">
