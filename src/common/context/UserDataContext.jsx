@@ -17,6 +17,7 @@ import {
 
 import { getUserData, getWishListData, getCartData, useLogoutHandler } from "common/helpers";
 import { useAuth } from "common/context";
+import { toast } from "react-toastify";
 
 const UserDataContext = createContext({ 
     userData: {
@@ -129,6 +130,7 @@ const UserDataProvider = ({ children }) => {
                 } catch (error) {
                     // Log out the User if User Data can't be fetched from saved Auth Token
                     console.log(error);
+                    toast.error("Couldn't fetch User Account Data. Please try logging in again!");
                     logoutHandler();
                 }
             }

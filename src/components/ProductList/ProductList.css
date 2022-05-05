@@ -15,6 +15,15 @@
 /* ==================> Products comp <======================= */
 .products {
     margin: 2rem 2rem 5rem 0;
+    position: relative;
+}
+
+.spinning-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .product-cards {
