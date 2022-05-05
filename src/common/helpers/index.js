@@ -1,4 +1,5 @@
 export { useLoginHandler } from "./Auth/LoginHandler";
+export { useLogoutHandler } from "./Auth/LogoutHandler";
 export { useSignupHandler } from "./Auth/SignUpHandler";
 export {
     getCartData, 
@@ -14,11 +15,13 @@ export {
     validatePassword, 
     validateMobileNo, 
     validateAltMobileNo, 
-    validatePinCode
+    validatePinCode,
+    addressFormValidation
 } from "./FormValidation";
 
 export { formatProductPrice } from "./priceFormatter";
 export { useProductActions } from "./ProductActions";
+export { useAccountActions } from "./AccountActions";
 export {
     getMinPriceOfProducts, 
     getMaxPriceOfProducts, 
@@ -31,3 +34,10 @@ export {
 } from "./productDataFilter";
 
 export { getWishListData, addItemToWishList, removeItemFromWishList } from "./WishListService";
+export { 
+    getUserData, 
+    getUserAddresses, 
+    addUserAddress, 
+    updateUserAddress, 
+    removeUserAddress 
+} from "./AccountService";

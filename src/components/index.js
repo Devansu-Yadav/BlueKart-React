@@ -17,6 +17,13 @@ import { SideBar } from "./SideBar/SideBar";
 import { SignupForm } from "./Signup/SignupForm";
 import { WishList } from "./WishList/WishList";
 import { CarouselItem, Carousel } from "./Carousel/Carousel";
+import { ProfilePageContent } from "./ProfilePage/ProfilePageContent";
+import { ProfilePageTabs } from "./ProfilePage/ProfilePageTabs";
+import { AddressPageContent } from "./AddressPage/AddressPageContent";
+import { AddressFormController } from "./AddressPage/AddressFormController";
+import { AddressForm } from "./AddressPage/AddressForm";
+import { EditAddressForm } from "./AddressPage/EditAddressForm";
+import { AddressList } from "./AddressPage/AddressList";
 
 export {
     CartListCard,
@@ -38,5 +45,12 @@ export {
     SignupForm,
     WishList,
     CarouselItem,
-    Carousel
+    Carousel,
+    ProfilePageContent,
+    ProfilePageTabs,
+    AddressPageContent,
+    AddressFormController,
+    AddressForm,
+    EditAddressForm,
+    AddressList
 };

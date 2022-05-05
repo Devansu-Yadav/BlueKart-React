@@ -6,7 +6,7 @@
 
 export const products = [
   {
-    _id: 1,
+    _id: "1",
     productName: "Surface Pro 8",
     brand: "Microsoft",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648711870/laptop.webp",
@@ -17,7 +17,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 2,
+    _id: "2",
     productName: "Samsung Galaxy M32",
     brand: "Samsung",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648712083/smartphone.webp",
@@ -28,7 +28,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 3,
+    _id: "3",
     productName: "Samsung Tablet",
     brand: "Samsung",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648712176/tablet.jpg",
@@ -39,7 +39,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 4,
+    _id: "4",
     productName: "Mens Sherwani",
     brand: "Manyavar",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648712213/fashion-men.jpg",
@@ -50,7 +50,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 5,
+    _id: "5",
     productName: "Women's T-Shirt",
     brand: "Nike",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648712255/fashion-women.jpg",
@@ -60,7 +60,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 6,
+    _id: "6",
     productName: "Boat Wireless Headphones",
     brand: "Boat",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648712762/accessories-1.webp",
@@ -71,7 +71,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 7,
+    _id: "7",
     productName: "Phillips Men's Trimmer",
     brand: "Phillips",
     image: "https://res.cloudinary.com/bluekart/image/upload/v1648712801/accessories-3.webp",
@@ -82,7 +82,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 8,
+    _id: "8",
     productName: "HRX Men's Sports Wear",
     brand: "HRX",
     image: "https://res.cloudinary.com/bluekart/image/upload/e_bgremoval/v1648712834/Sports-2.webp",
@@ -93,7 +93,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 9,
+    _id: "9",
     productName: "Nike Sports Shoes",
     brand: "Nike",
     image: "https://res.cloudinary.com/bluekart/image/upload/e_bgremoval/v1648712870/Sports-1.webp",
@@ -104,7 +104,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 10,
+    _id: "10",
     productName: "Women Training Shoes",
     brand: "Nike",
     image: "https://res.cloudinary.com/bluekart/image/upload/e_bgremoval/v1648712906/women-training-shoes.jpg",
@@ -115,7 +115,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 11,
+    _id: "11",
     productName: "Handheld Bag for Women",
     brand: "Lavie",
     image: "https://res.cloudinary.com/bluekart/image/upload/e_bgremoval/v1648712973/women-handheld-bag.jpg",
@@ -126,7 +126,7 @@ export const products = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio enim optio"
   },
   {
-    _id: 12,
+    _id: "12",
     productName: "Rose Gold Plated necklace",
     brand: "Kalyan Jewellers",
     image: "https://res.cloudinary.com/bluekart/image/upload/c_scale,h_420,w_420/v1648713026/Rose-Gold-necklace.jpg",

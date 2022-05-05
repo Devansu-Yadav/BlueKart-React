@@ -13,7 +13,7 @@ const getCartData = async (authToken) => {
 
 const addItemToCart = async (authToken, cartItem) => {
     try {
-        const response = await axios.post("/api/user/cart", cartItem, { headers: { authorization: authToken }});
+        const response = await axios.post("/api/user/cart", { product: cartItem }, { headers: { authorization: authToken }});
         if(response.status === 201) {
             return response.data;
         }
@@ -24,7 +24,7 @@ const addItemToCart = async (authToken, cartItem) => {
 
 const updateCartItemQuantity = async (authToken, itemId, type) => {
     try {
-        const response = await axios.post(`/api/user/cart/:${itemId}`, { action: { type: type } }, { headers: { authorization: authToken }});
+        const response = await axios.post(`/api/user/cart/${itemId}`, { action: { type: type } }, { headers: { authorization: authToken }});
         if(response.status === 200) {
             return response.data;
         }
@@ -35,7 +35,7 @@ const updateCartItemQuantity = async (authToken, itemId, type) => {
 
 const removeItemFromCart = async (authToken, itemId) => {
     try {
-        const response = await axios.delete(`/api/user/cart/:${itemId}`, { headers: { authorization: authToken }});
+        const response = await axios.delete(`/api/user/cart/${itemId}`, { headers: { authorization: authToken }});
         if(response.status === 200) {
             return response.data;
         }
