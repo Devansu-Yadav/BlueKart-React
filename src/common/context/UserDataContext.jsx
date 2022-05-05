@@ -15,7 +15,7 @@ import {
     REMOVE_USER_ADDRESS
 } from "common/constants";
 
-import { getUserData, getWishListData, getCartData } from "common/helpers";
+import { getUserData, getWishListData, getCartData, useLogoutHandler } from "common/helpers";
 import { useAuth } from "common/context";
 
 const UserDataContext = createContext({ 
@@ -36,6 +36,7 @@ const useUserData = () => useContext(UserDataContext);
 
 const UserDataProvider = ({ children }) => {
     const { userAuthToken } = useAuth();
+    const { logoutHandler } = useLogoutHandler();
 
     const initialUserData = {
         _id: "",
@@ -114,16 +115,22 @@ const UserDataProvider = ({ children }) => {
     useEffect(() => {
         const saveUserDataWithWishListAndCart = async () => {
             if(userAuthToken) {
-                const { wishlist } = await getWishListData(userAuthToken);
-                const { cart } = await getCartData(userAuthToken);
+                try {
+                    // Fetch all the user account Data including Addresses
+                    const userAccountData = await getUserData(userAuthToken);
+                    const { wishlist } = await getWishListData(userAuthToken);
+                    const { cart } = await getCartData(userAuthToken);
 
-                // Fetch all the user account Data including Addresses
-                const userAccountData = await getUserData(userAuthToken);
-                const { _id, firstName, lastName, email, password, addresses } = userAccountData.userData;
-                userDataDispatch({ type: USER_LOGIN, payload: { _id, firstName, lastName, email, password, addresses }});
+                    const { _id, firstName, lastName, email, password, addresses } = userAccountData.userData;
+                    userDataDispatch({ type: USER_LOGIN, payload: { _id, firstName, lastName, email, password, addresses }});
 
-                userDataDispatch({ type: SAVE_USER_WISHLIST, payload: wishlist });
-                userDataDispatch({ type: SAVE_USER_CART, payload: cart }); 
+                    userDataDispatch({ type: SAVE_USER_WISHLIST, payload: wishlist });
+                    userDataDispatch({ type: SAVE_USER_CART, payload: cart });
+                } catch (error) {
+                    // Log out the User if User Data can't be fetched from saved Auth Token
+                    console.log(error);
+                    logoutHandler();
+                }
             }
         }
         saveUserDataWithWishListAndCart();

@@ -14,8 +14,8 @@ import { requiresAuth } from "../utils/authUtils";
 
 export const getUserProfileData = function (schema, request) {
     const userId = requiresAuth.call(this, request);
-    if (!userId) {
-        new Response(
+    if (!userId || typeof userId === "object") {
+        return new Response(
           404,
           {},
           {

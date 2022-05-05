@@ -15,8 +15,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export const getAddresses = function (schema, request) {
     const userId = requiresAuth.call(this, request);
-    if (!userId) {
-        new Response(
+    if (!userId || typeof userId === "object") {
+        return new Response(
           404,
           {},
           {
@@ -37,8 +37,8 @@ export const getAddresses = function (schema, request) {
 export const addAddress = function (schema, request) {
     const userId = requiresAuth.call(this, request);
     try {
-        if(!userId) {
-            new Response(
+        if(!userId || typeof userId === "object") {
+            return new Response(
               404,
               {},
               {
@@ -77,8 +77,8 @@ export const addAddress = function (schema, request) {
 export const removeAddress = function (schema, request) {
     const userId = requiresAuth.call(this, request);
     try {
-        if(!userId) {
-            new Response(
+        if(!userId || typeof userId === "object") {
+            return new Response(
               404,
               {},
               {
@@ -113,8 +113,8 @@ export const removeAddress = function (schema, request) {
 export const updateAddress = function (schema, request) {
     const userId = requiresAuth.call(this, request);
     try {
-        if(!userId) {
-            new Response(
+        if(!userId || typeof userId === "object") {
+            return new Response(
               404,
               {},
               {
