@@ -26,6 +26,7 @@
     border: none;
     cursor: pointer;
     background: transparent;
+    color: var(--primary-color);
 }
 
 .searchbar .search-icon {

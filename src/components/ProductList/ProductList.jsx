@@ -2,44 +2,30 @@ import "./ProductList.css";
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import ReactLoading from "react-loading";
-import { useProductPriceFilter } from "common/context";
+import { useProductPriceFilter, useProductsData } from "common/context";
 import { fetchCategoryLabel } from "common/helpers";
 import { PriceFilter, ProductListCard, SearchBar } from "../index";
 
 const ProductListing = () => {
     const { filteredProductData, categoryFilterDispatch, clearProductFilters } = useProductPriceFilter();
+    const { setProductsSearchQuery } = useProductsData();
     const { categoryName } = useParams();
     const { search } = useLocation();
     const queryVal = new URLSearchParams(search).get("query");
-
-    const [searchedProducts, setSearchedProducts] = useState([]);
 
     const [loading, setLoading] = useState(true);
     const sleep = milliSeconds => {
         return new Promise(resolve => setTimeout(resolve, milliSeconds));
     }
 
-    const getSearchedProducts = () => {
-        let searchedProducts = [];
-
-        console.log(queryVal);
-        searchedProducts = filteredProductData.filter((product) => 
-            product.productName.toLowerCase().includes(queryVal.toLowerCase()) || 
-            product.categoryName.toLowerCase().includes(queryVal.toLowerCase())
-        );
-        setSearchedProducts(searchedProducts);
-    };
-
     // Loading screen for loading all products
     useEffect(() => {
         sleep(1500).then(() => setLoading(false));
     }, []);
 
-    // Fetch searched products based on user's search
+    // Set user's search query in products Data context
     useEffect(() => {
-        if(search.length > 0) {
-            getSearchedProducts();
-        }
+        setProductsSearchQuery(search);
     }, [search]);
 
     useEffect(() => {
@@ -71,8 +57,22 @@ const ProductListing = () => {
                     /> ): (
 
                         <>
-                            {!search && <div className="product-cards product-grid-3-column">
-                                { !filteredProductData.length && <div className="productList-empty-container centered-flex-col-container">
+                            { search && <div className="centered-flex-col-container search-header">
+                                {`Search Results for "${queryVal}" - ${filteredProductData.length} products`}
+                            </div>
+                            }
+
+                            <div className="product-cards product-grid-3-column">
+                                { search && !filteredProductData.length && 
+                                    <div className="product-cards product-grid-3-column">
+                                        <div className="productList-empty-container centered-flex-col-container">
+                                            <h3 className="productList-empty-heading">No Search Results found for {queryVal}</h3>
+                                            <img className="productList-empty-img" src="/assets/images/empty-productlist.svg" alt="Product Not found" />
+                                        </div>
+                                    </div>
+                                }
+
+                                {!search && !filteredProductData.length && <div className="productList-empty-container centered-flex-col-container">
                                     <h3 className="productList-empty-heading">Couldn't find products based on your filter :(</h3>
                                     <p className="productList-empty-content">
                                         Try changing the filters or Refreshing the page!
@@ -83,30 +83,7 @@ const ProductListing = () => {
                                 { filteredProductData.map(product => {
                                     return <ProductListCard productData={product} key={product._id} className="zoom" outOfStock={product.isOutOfStock} />
                                 })}
-                            </div>}
-
-                            {search && searchedProducts.length > 0 && 
-                                <>
-                                    <div className="centered-flex-col-container search-header">
-                                        {`Search Results for "${queryVal}" - ${searchedProducts.length} products`}
-                                    </div>
-
-                                    <div className="product-cards product-grid-3-column">
-                                        { searchedProducts.map(product => {
-                                            return <ProductListCard productData={product} key={product._id} className="zoom" outOfStock={product.isOutOfStock} />
-                                        })}
-                                    </div>
-                                </> 
-                            }
-
-                            { search && !searchedProducts.length && 
-                                <div className="product-cards product-grid-3-column">
-                                    <div className="productList-empty-container centered-flex-col-container">
-                                        <h3 className="productList-empty-heading">No Search Results found for {queryVal}</h3>
-                                        <img className="productList-empty-img" src="/assets/images/empty-productlist.svg" alt="Product Not found" />
-                                    </div>
-                                </div>
-                            }
+                            </div>
                         </>
                     ) 
                 }
