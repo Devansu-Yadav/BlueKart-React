@@ -13,12 +13,25 @@ import {
 	AddressPage
 } from "pages";
 import { MockAPI } from "components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
 	const { isUserAuthenticated } = useAuth();
 
 	return (
 		<div className="App">
+			<ToastContainer 
+				className="toast-alerts"
+				position="bottom-right"
+				autoClose={1000} 
+				draggable
+				hideProgressBar={false}
+				pauseOnHover 
+				pauseOnFocusLoss 
+				newestOnTop={true}
+			/>
+
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/productList" element={<ProductListingPage />} />

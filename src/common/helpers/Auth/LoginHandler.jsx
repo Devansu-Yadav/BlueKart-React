@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useFormError, useAuth, useUserData } from "common/context";
 import { getCartData, getWishListData } from "../index";
 import { USER_LOGIN } from "common/constants";
@@ -22,7 +23,7 @@ const useLoginHandler = () => {
         try {
             const loginResponse = await axios.post("/api/auth/login", loginFormData);
             if(loginResponse.status === 200) {
-                console.log("Login successful!!");
+                toast.success("Login successful!");
                 const { foundUser, encodedToken } = loginResponse.data;
                 navigate("/productList");
                 localStorage.setItem("authToken", encodedToken);
@@ -39,6 +40,7 @@ const useLoginHandler = () => {
             }
         } catch(err) {
             console.log("loginHandler: Error in Login", err.response.data.errors[0]);
+            toast.error("Error Logging in!");
             setIsFormError(true);
             setFormDataErr(err.response.data.errors[0]);
         }

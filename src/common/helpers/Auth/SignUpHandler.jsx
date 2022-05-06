@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { validateOnlyStrings, validateEmail, validatePassword } from "../index";
 import { useFormError } from "common/context";
 
@@ -84,6 +85,7 @@ const useSignupHandler = () => {
                 const { firstName, lastName, email, password } = signupFormData;
                 const signupResponse = await axios.post("/api/auth/signup", { firstName, lastName, email, password });
                 if(signupResponse.status === 201) {
+                    toast.success("User Created successfully!!");
                     console.log("User Created successfully!!");
                     // Reset Form Errors on succesful signup
                     setIsFormError(false);
@@ -93,6 +95,7 @@ const useSignupHandler = () => {
                 }
             } catch(err) {
                 console.log("signupHandler: Error in Signup", err.response.data.errors[0]);
+                toast.error("Error Signing up!");
                 setIsFormError(true);
                 setFormDataErr(err.response.data.errors[0]);
             }
