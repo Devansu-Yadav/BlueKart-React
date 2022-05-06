@@ -26,6 +26,10 @@
     transform: translate(-50%, -50%);
 }
 
+.search-header {
+    font-size: 1.6rem;
+}
+
 .product-cards {
     margin-top: 3rem;
     margin-bottom: 2rem;

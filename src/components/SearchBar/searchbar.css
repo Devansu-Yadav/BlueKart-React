@@ -21,6 +21,13 @@
     border: none;
 }
 
+.search-btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
 .searchbar .search-icon {
     font-size: 1.6rem;
     cursor: pointer;
