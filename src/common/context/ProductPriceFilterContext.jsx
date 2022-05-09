@@ -49,7 +49,6 @@ const useProductPriceFilter = () => useContext(ProductPriceFilterContext);
 const ProductPriceFilterProvider = ({ children }) => {
     const { productsData, productPriceRange } = useProductsData();
     const { searchedProducts } = useSearchProducts();
-    // console.log(searchedProducts);
 
     const ratingsFilterReducer = (state, action) => {
         switch(action.ratingType) {

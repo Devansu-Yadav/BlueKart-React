@@ -21,11 +21,11 @@ const SearchBar = ({ className }) => {
 
     return (
         <form className={`searchbar ${className.position ? className.position: ""} flex-row-container`} onSubmit={ searchHandler }>
-            <input className="input-search input-primary" type="search" placeholder="Search for products, brands and more" 
+            <input className="input-search input-primary" type="search" value={searchText} placeholder="Search for products, brands and more" 
             onChange={(event) => setSearchText(event.target.value)} />
 
             <button className="search-btn" type="submit">
-                <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon space-M"/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon space-M" />
             </button>
         </form>
     );
