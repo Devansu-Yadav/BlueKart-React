@@ -87,7 +87,7 @@ const useSignupHandler = () => {
                 if(signupResponse.status === 201) {
                     toast.success("User Created successfully!!");
                     console.log("User Created successfully!!");
-                    // Reset Form Errors on succesful signup
+                    // Reset Form Errors on successful signup
                     setIsFormError(false);
                     setFormDataErr("");
 

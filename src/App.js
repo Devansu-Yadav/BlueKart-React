@@ -10,7 +10,8 @@ import {
 	CartPage, 
 	NotFound404Page,
 	ProfilePage,
-	AddressPage
+	AddressPage,
+	ForgetPasswordPage
 } from "pages";
 import { MockAPI } from "components";
 import { ToastContainer } from "react-toastify";
@@ -41,7 +42,7 @@ function App() {
 					<>
 						<Route path="/login" element={<LoginPage />} />
 						<Route path="/signup" element={<SignUpPage />} />
-						<Route path="/passwordReset" element={<Navigate to="/login" />} />
+						<Route path="/passwordReset" element={<ForgetPasswordPage />} />
 						<Route path="/wishList" element={<Navigate to="/login" />} />
 						<Route path="/cart" element={<Navigate to="/login" />} />
 						<Route path="/account" element={<Navigate to="/login" />} />
@@ -50,7 +51,7 @@ function App() {
 					<>
 						<Route path="/login" element={<Navigate to="/" />} />
 						<Route path="/signup" element={<Navigate to="/" />} />
-						<Route path="/passwordReset" element={<LandingPage />} />
+						<Route path="/passwordReset" element={<Navigate to="/" />} />
 						<Route path="/wishList" element={<WishListPage />} />
 						<Route path="/cart" element={<CartPage />} />
 						<Route path="/account" element={<ProfilePage />} />

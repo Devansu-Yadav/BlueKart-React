@@ -22,6 +22,7 @@ const useLoginHandler = () => {
         event.preventDefault();
         try {
             const loginResponse = await axios.post("/api/auth/login", loginFormData);
+            console.log(loginResponse);
             if(loginResponse.status === 200) {
                 toast.success("Login successful!");
                 const { foundUser, encodedToken } = loginResponse.data;

@@ -1,6 +1,7 @@
 export { useLoginHandler } from "./Auth/LoginHandler";
 export { useLogoutHandler } from "./Auth/LogoutHandler";
 export { useSignupHandler } from "./Auth/SignUpHandler";
+export { usePasswordResetHandler } from "./Auth/PasswordResetHandler";
 export {
     getCartData, 
     addItemToCart, 

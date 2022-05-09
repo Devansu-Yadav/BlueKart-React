@@ -24,6 +24,7 @@ import { AddressFormController } from "./AddressPage/AddressFormController";
 import { AddressForm } from "./AddressPage/AddressForm";
 import { EditAddressForm } from "./AddressPage/EditAddressForm";
 import { AddressList } from "./AddressPage/AddressList";
+import { PasswordResetForm } from "./PasswordReset/PasswordResetForm";
 
 export {
     CartListCard,
@@ -52,5 +53,6 @@ export {
     AddressFormController,
     AddressForm,
     EditAddressForm,
-    AddressList
+    AddressList,
+    PasswordResetForm
 };

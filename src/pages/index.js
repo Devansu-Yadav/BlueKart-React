@@ -7,6 +7,7 @@ import { SignUpPage } from "./SignupPage";
 import { WishListPage } from "./WishListPage";
 import { ProfilePage } from "./ProfilePage";
 import { AddressPage } from "./AddressPage";
+import { ForgetPasswordPage } from "./ForgetPasswordPage";
 
 export {
     CartPage,
@@ -17,5 +18,6 @@ export {
     SignUpPage,
     WishListPage,
     ProfilePage,
-    AddressPage
+    AddressPage,
+    ForgetPasswordPage
 };
