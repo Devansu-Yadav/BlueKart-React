@@ -22,6 +22,7 @@ export {
 export { formatProductPrice } from "./priceFormatter";
 export { useProductActions } from "./ProductActions";
 export { useAccountActions } from "./AccountActions";
+export { useSearchProducts } from "./SearchProductsHandler";
 export {
     getMinPriceOfProducts, 
     getMaxPriceOfProducts, 

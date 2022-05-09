@@ -7,7 +7,9 @@ const ProductsDataContext = createContext({
     setProductsData: () => {}, 
     productPriceRange: { minRange: 0, maxRange: 0 },
     categoryData: [],
-    setCategoryData: () => {}
+    setCategoryData: () => {},
+    productsSearchQuery: "",
+    setProductsSearchQuery: () => {}
 });
 
 const useProductsData = () => useContext(ProductsDataContext);
@@ -16,6 +18,7 @@ const ProductsDataProvider = ({ children }) => {
     const [productsData, setProductsData] = useState([]);
     const [productPriceRange, setProductPriceRange] = useState({ minRange: 0, maxRange: 0 });
     const [categoryData, setCategoryData] = useState([]);
+    const [productsSearchQuery, setProductsSearchQuery] = useState("");
 
     useEffect(() => {
         const getProductsData = async () => {
@@ -52,7 +55,16 @@ const ProductsDataProvider = ({ children }) => {
         getCategoryData();
     }, []);
 
-    return <ProductsDataContext.Provider value={{ productsData, setProductsData, categoryData, setCategoryData, productPriceRange, setProductPriceRange }}>
+    return <ProductsDataContext.Provider value={{ 
+            productsData, 
+            setProductsData, 
+            categoryData, 
+            setCategoryData, 
+            productPriceRange, 
+            setProductPriceRange,
+            productsSearchQuery, 
+            setProductsSearchQuery
+        }}>
         { children }
     </ProductsDataContext.Provider>
 }
