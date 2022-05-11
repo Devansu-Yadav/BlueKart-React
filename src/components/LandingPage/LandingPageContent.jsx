@@ -135,7 +135,7 @@ const LandingPageContent = () => {
                     <div className="category-cards-container flex-row-container">
                         { categoryData.map(({ id, categoryName, image }) => {
                             return (
-                            <Link to={`/productList/${categoryName}`} key={id}>
+                            <Link to={`/productList/categories/${categoryName}`} key={id}>
                                 <div className="card card-text-overlay space-S zoom">
                                     <div className="card-img">
                                         <img src={`${image}`} alt={`${categoryName}`} />

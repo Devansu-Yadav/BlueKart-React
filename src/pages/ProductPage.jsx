@@ -1,25 +1,25 @@
 import { useEffect } from "react";
-import { NavBar, SideBar, Footer, ProfilePageContent } from "components";
 import { useSidebar } from "common/context";
-import "styles/ProfilePage.css";
+import { NavBar, Footer, SideBar, SingleProductCard } from "components";
+import "styles/ProductPage.css";
 
-const ProfilePage = () => {
+const ProductPage = () => {
     const { displaySideBar } = useSidebar();
 
-    // Updating title on rendering Profile Page comp
+    // Updating title on rendering Product Page comp
     useEffect(() => {
-        document.title = "BlueKart - Profile";
+        document.title = "BlueKart - Product";
     }, []);
 
     return (
         <div>
-            <NavBar linkActive="profile" />
+            <NavBar linkActive="productList" />
             <div className={`overlay-bg ${displaySideBar ? "overlay-show": ""}`}></div>
-            <ProfilePageContent />
             <SideBar />
+            <SingleProductCard />
             <Footer />
         </div>
     );
 }
 
-export { ProfilePage };
+export { ProductPage };

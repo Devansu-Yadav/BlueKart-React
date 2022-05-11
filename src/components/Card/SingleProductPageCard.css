@@ -1,0 +1,157 @@
+.product-container {
+    width: 70rem;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0px 0px 10px var(--gray-color);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img-container {
+    width: 50%;
+}
+
+.product-details-container {
+    width: 50%;
+}
+
+.stack-list {
+    width: 90%;
+}
+
+.product-details-heading {
+    color: var(--content-text-color);
+}
+
+.product-rating {
+    width: fit-content;
+    border-radius: 0.5rem;
+    border: 1px solid var(--gray-color);
+    padding: 0.5rem;
+    font-size: 1.6rem;
+    column-gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.product-rating .rating {
+    color: var(--warning-color);
+}
+
+.product-price-container {
+    row-gap: 2rem;
+}
+
+.product-price {
+    row-gap: 0.5rem;
+}
+
+.product-price-container .price-heading {
+    color: var(--content-text-color);
+    column-gap: 1rem;
+}
+
+.price-heading span {
+    font-size: 2.1rem;
+}
+
+.disabled-txt {
+    color: var(--gray-color);
+}
+
+.product-discount {
+    color: var(--primary-color);
+}
+
+.inclusive-tax {
+    font-size: 1.6rem;
+    color: var(--success-color);
+}
+
+.product-actions {
+    column-gap: 2rem;
+}
+
+.product-actions .card-button {
+    border-radius: 1rem;
+    margin: 0;
+}
+
+.product-actions .card-button .out-of-stock-btn {
+    margin-left: 0;
+} 
+
+.product-actions .cart-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.product-actions .wishlist-btn {
+    color: var(--default-color);
+}
+
+.product-actions .cart-btn:hover {
+    filter: brightness(90%);
+}
+
+.product-actions .wishlist-btn:hover {
+    background-color: var(--default-color);
+    color: var(--white-color);
+}
+
+.product-features-offers-container {
+    row-gap: 2rem;
+}
+
+.product-offers {
+    row-gap: 0.3rem;
+}
+
+.offers-heading {
+    font-weight: 700;
+    column-gap: 1rem;
+    font-size: 2rem;
+    color: var(--content-text-color);
+}
+
+.offers-txt {
+    color: var(--content-text-color);
+    font-size: 1.6rem;
+}
+
+.product-features-heading {
+    font-weight: 700;
+    color: var(--content-text-color);
+    row-gap: 0.3rem;
+    font-size: 2rem;
+}
+
+.product-feature {
+    color: var(--content-text-color);
+    font-size: 1.6rem;
+}
+
+/* ------------------------------------> Responsive CSS <------------------------------------ */
+@media only screen and (max-width: 750px) {
+    .product-container {
+        flex-direction: column;
+        width: 30rem;
+    }
+
+    .product-img-container, .product-details-container {
+        width: 100%;
+    }
+
+    .stack-list {
+        width: 100%;
+    }
+
+    .price-heading span {
+        font-size: 1.8rem;
+    }
+}

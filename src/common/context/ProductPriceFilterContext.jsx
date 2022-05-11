@@ -36,6 +36,7 @@ import {
 const ProductPriceFilterContext = createContext({ 
     priceRange: { minRange: 0, maxRange: 0}, 
     categoryFilter: { Electronics: true, Fashion: true, Sports: true, Accessories: true },
+    filteredProductData: [],
     clearProductFilters: () => {},
     setPriceRange: () => {}, 
     ratingsFilterDispatch: () => {}, 

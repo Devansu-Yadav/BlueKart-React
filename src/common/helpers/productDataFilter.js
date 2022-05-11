@@ -13,6 +13,10 @@ const getMaxPriceOfProducts = (productData) => {
     return productData.reduce((maxPrice, currProduct) => currProduct.price > maxPrice ? currProduct.price: maxPrice, Number.MIN_SAFE_INTEGER);
 }
 
+const getProductData = (productId, products) => {
+    return products.find(product => product._id === productId);
+}
+
 const filterProductsInPriceRange = (productsData, minRange, maxRange) => {
     return productsData.filter(item => item.price >= minRange && item.price <= maxRange);
 }
@@ -72,7 +76,8 @@ const fetchCategoryLabel = (categoryName) => {
 
 export { 
     getMinPriceOfProducts, 
-    getMaxPriceOfProducts, 
+    getMaxPriceOfProducts,
+    getProductData,
     filterProductsInPriceRange, 
     filterProductsByRating, 
     filterProductsByCategory,
