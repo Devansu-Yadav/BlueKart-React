@@ -1,16 +1,13 @@
 import "./CartBill.css";
 import { HashLink } from "react-router-hash-link";
-import { formatProductPrice } from "common/helpers";
+import { 
+    formatProductPrice, 
+    calculateTotalPrice, 
+    calculateDiscountAmt, 
+    calculateTotalDeliveryPrice 
+} from "common/helpers";
 
 const CartBill = ({ cartItemsData, cartListItemsCount }) => {
-    const calculateTotalPrice = (cartList) => {
-        return parseFloat(Number(cartList.reduce((totalPrice, currentItem) => currentItem.price*currentItem.qty + totalPrice, 0)).toFixed(2));
-    }
-
-    const calculateTotalDeliveryPrice = (cartList) => {
-        return parseFloat(Number(cartList.reduce((totalPrice, currentItem) => ((currentItem.price * 0.005) + totalPrice), 0)).toFixed(2));
-    }
-
     const calculateFinalAmt = () => {
         return parseFloat(Number(totalPrice - discountAmt + deliveryCharges).toFixed(2));
     }
@@ -20,7 +17,7 @@ const CartBill = ({ cartItemsData, cartListItemsCount }) => {
     }
 
     const totalPrice = calculateTotalPrice(cartItemsData);
-    const discountAmt = totalPrice * 0.1;
+    const discountAmt = calculateDiscountAmt(cartItemsData);
     const deliveryCharges = calculateTotalDeliveryPrice(cartItemsData);
 
     return (

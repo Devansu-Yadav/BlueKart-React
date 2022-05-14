@@ -8,6 +8,7 @@ import { WishListPage } from "./WishListPage";
 import { ProfilePage } from "./ProfilePage";
 import { AddressPage } from "./AddressPage";
 import { ForgetPasswordPage } from "./ForgetPasswordPage";
+import { ProductPage } from "./ProductPage";
 
 export {
     CartPage,
@@ -19,5 +20,6 @@ export {
     WishListPage,
     ProfilePage,
     AddressPage,
-    ForgetPasswordPage
+    ForgetPasswordPage,
+    ProductPage
 };

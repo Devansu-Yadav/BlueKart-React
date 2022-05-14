@@ -9,7 +9,8 @@ const ProductsDataContext = createContext({
     categoryData: [],
     setCategoryData: () => {},
     productsSearchQuery: "",
-    setProductsSearchQuery: () => {}
+    setProductsSearchQuery: () => {},
+    getSingleProductData: () => {}
 });
 
 const useProductsData = () => useContext(ProductsDataContext);
@@ -55,6 +56,17 @@ const ProductsDataProvider = ({ children }) => {
         getCategoryData();
     }, []);
 
+    const getSingleProductData = async (productId) => {
+        try {
+            const productDataResponse = await axios.get(`/api/products/${productId}`);
+            if(productDataResponse.status === 200) {
+                return productDataResponse.data;
+            }
+        } catch(err) {
+            console.log(err.response.data.errors[0]);
+        }
+    };
+
     return <ProductsDataContext.Provider value={{ 
             productsData, 
             setProductsData, 
@@ -63,7 +75,8 @@ const ProductsDataProvider = ({ children }) => {
             productPriceRange, 
             setProductPriceRange,
             productsSearchQuery, 
-            setProductsSearchQuery
+            setProductsSearchQuery,
+            getSingleProductData
         }}>
         { children }
     </ProductsDataContext.Provider>

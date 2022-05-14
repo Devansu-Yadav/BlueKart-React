@@ -11,7 +11,8 @@ import {
 	NotFound404Page,
 	ProfilePage,
 	AddressPage,
-	ForgetPasswordPage
+	ForgetPasswordPage,
+	ProductPage
 } from "pages";
 import { MockAPI } from "components";
 import { ToastContainer } from "react-toastify";
@@ -36,7 +37,8 @@ function App() {
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/productList" element={<ProductListingPage />} />
-				<Route path="/productList/:categoryName" element={<ProductListingPage />} />
+				<Route path="/productList/categories/:categoryName" element={<ProductListingPage />} />
+				<Route path="/productList/:productId" element={<ProductPage />} />
 				<Route path="/mock" element={<MockAPI />} />
 				{ !isUserAuthenticated ? 
 					<>

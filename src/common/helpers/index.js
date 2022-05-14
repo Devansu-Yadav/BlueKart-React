@@ -20,13 +20,14 @@ export {
     addressFormValidation
 } from "./FormValidation";
 
-export { formatProductPrice } from "./priceFormatter";
+export { formatProductPrice, calculateTotalPrice, calculateTotalDeliveryPrice, calculateDiscountAmt, getDiscountedProductPrice } from "./priceFormatter";
 export { useProductActions } from "./ProductActions";
 export { useAccountActions } from "./AccountActions";
 export { useSearchProducts } from "./SearchProductsHandler";
 export {
     getMinPriceOfProducts, 
-    getMaxPriceOfProducts, 
+    getMaxPriceOfProducts,
+    getProductData,
     filterProductsInPriceRange, 
     filterProductsByRating, 
     filterProductsByCategory,
