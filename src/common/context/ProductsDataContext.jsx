@@ -1,13 +1,16 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
-import { getMinPriceOfProducts, getMaxPriceOfProducts } from "../helpers/productDataFilter";
+import { getMinPriceOfProducts, getMaxPriceOfProducts } from "common/helpers";
 
 const ProductsDataContext = createContext({ 
     productsData: [], 
     setProductsData: () => {}, 
     productPriceRange: { minRange: 0, maxRange: 0 },
     categoryData: [],
-    setCategoryData: () => {}
+    setCategoryData: () => {},
+    productsSearchQuery: "",
+    setProductsSearchQuery: () => {},
+    getSingleProductData: () => {}
 });
 
 const useProductsData = () => useContext(ProductsDataContext);
@@ -16,6 +19,7 @@ const ProductsDataProvider = ({ children }) => {
     const [productsData, setProductsData] = useState([]);
     const [productPriceRange, setProductPriceRange] = useState({ minRange: 0, maxRange: 0 });
     const [categoryData, setCategoryData] = useState([]);
+    const [productsSearchQuery, setProductsSearchQuery] = useState("");
 
     useEffect(() => {
         const getProductsData = async () => {
@@ -52,7 +56,28 @@ const ProductsDataProvider = ({ children }) => {
         getCategoryData();
     }, []);
 
-    return <ProductsDataContext.Provider value={{ productsData, setProductsData, categoryData, setCategoryData, productPriceRange, setProductPriceRange }}>
+    const getSingleProductData = async (productId) => {
+        try {
+            const productDataResponse = await axios.get(`/api/products/${productId}`);
+            if(productDataResponse.status === 200) {
+                return productDataResponse.data;
+            }
+        } catch(err) {
+            console.log(err.response.data.errors[0]);
+        }
+    };
+
+    return <ProductsDataContext.Provider value={{ 
+            productsData, 
+            setProductsData, 
+            categoryData, 
+            setCategoryData, 
+            productPriceRange, 
+            setProductPriceRange,
+            productsSearchQuery, 
+            setProductsSearchQuery,
+            getSingleProductData
+        }}>
         { children }
     </ProductsDataContext.Provider>
 }

@@ -1,9 +1,13 @@
 // Custom Hook to perform Product Action related to WishList and Cart
-import { useUserData } from "../context/UserDataContext";
-import { addItemToWishList, removeItemFromWishList } from "./WishListService";
-import { addItemToCart, updateCartItemQuantity, removeItemFromCart } from "./CartService";
-import { useAuth } from "../context/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
+import { useUserData, useAuth } from "common/context";
+import { 
+    addItemToWishList, 
+    removeItemFromWishList, 
+    addItemToCart, 
+    updateCartItemQuantity, 
+    removeItemFromCart 
+} from "./index";
 import { 
     ADD_TO_WISHLIST, 
     REMOVE_FROM_WISHLIST, 
@@ -11,7 +15,7 @@ import {
     REMOVE_FROM_CART,
     INCREASE_ITEM_QUANTITY,
     DECREASE_ITEM_QUANTITY
-} from "../constants";
+} from "common/constants";
 
 const useProductActions = () => {
     const { userData, userDataDispatch } = useUserData();

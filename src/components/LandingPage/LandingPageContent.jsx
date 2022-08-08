@@ -1,12 +1,11 @@
 import "./LandingPageContent.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { SideBar } from "../SideBar/SideBar";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { SearchBar } from "../SearchBar/SearchBar";
-import { useSidebar } from "../../common/context/SidebarContext";
-import { useProductsData } from "../../common/context/ProductsDataContext";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { SideBar, SearchBar } from "../index";
+import { useSidebar, useProductsData } from "common/context";
+import { CarouselItem, Carousel } from "../index";
 
 const LandingPageContent = () => {
     const { displaySideBar } = useSidebar();
@@ -18,6 +17,21 @@ const LandingPageContent = () => {
 
             <div className={`overlay-bg ${displaySideBar ? "overlay-show": ""}`}></div>
             <SideBar />
+
+            <Carousel>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,w_1650/v1648213445/Carousel_img-1_losvfp.jpg" alt="Electronics" />
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,w_1650/v1649832622/Carousel_img_4_ubvenz.jpg" alt="Accessories" />
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,q_auto:best,w_1650/v1649841572/Fashion-Carousel-img_kxpjh4.jpg" alt="Fashion" />
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="carousel-imgs" src="https://res.cloudinary.com/bluekart/image/upload/c_scale,h_650,q_auto:best,w_1650/v1649929357/Carousel-img-sports_rjzgrb.jpg" alt="Sports" />
+                </CarouselItem>
+            </Carousel>
 
             <main className="main-container">
                 {/* Hero Section */}
@@ -121,7 +135,7 @@ const LandingPageContent = () => {
                     <div className="category-cards-container flex-row-container">
                         { categoryData.map(({ id, categoryName, image }) => {
                             return (
-                            <Link to={`/productList/${categoryName}`} key={id}>
+                            <Link to={`/productList/categories/${categoryName}`} key={id}>
                                 <div className="card card-text-overlay space-S zoom">
                                     <div className="card-img">
                                         <img src={`${image}`} alt={`${categoryName}`} />

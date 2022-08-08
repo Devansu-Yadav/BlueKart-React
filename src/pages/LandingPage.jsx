@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { NavBar } from "../components/NavBar/NavBar";
-import { Footer } from "../components/Footer/Footer";
-import { LandingPageContent } from "../components/LandingPage/LandingPageContent";
-import "../styles/LandingPage.css";
+import { useEffect } from "react";
+import { NavBar, Footer, LandingPageContent } from "components";
+import "styles/LandingPage.css";
 
 const LandingPage = () => {
     // Updating title on rendering Landing Page comp

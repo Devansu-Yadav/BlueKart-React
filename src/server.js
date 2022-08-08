@@ -2,6 +2,7 @@ import { Server, Model, RestSerializer } from "miragejs";
 import {
   loginHandler,
   signupHandler,
+  passwordResetHandler
 } from "./backend/controllers/AuthController";
 import {
   addItemToCartHandler,
@@ -22,6 +23,15 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
+import {
+  getUserProfileData
+} from "./backend/controllers/UserAccountController";
+import {
+  getAddresses,
+  addAddress,
+  removeAddress,
+  updateAddress
+} from "./backend/controllers/UserAddressController";
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -49,7 +59,7 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", { ...item, cart: [], wishlist: [], addresses: [] })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -60,6 +70,7 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
+      this.post("/auth/passwordReset", passwordResetHandler.bind(this));
 
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
@@ -85,6 +96,15 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+
+      // user account routes (private)
+      this.get("/user/account", getUserProfileData.bind(this));
+
+      // user address routes (private)
+      this.get("/user/account/addresses", getAddresses.bind(this));
+      this.post("/user/account/addresses", addAddress.bind(this));
+      this.post("/user/account/addresses/:addressId", updateAddress.bind(this));
+      this.delete("/user/account/addresses/:addressId", removeAddress.bind(this));
     },
   });
 }

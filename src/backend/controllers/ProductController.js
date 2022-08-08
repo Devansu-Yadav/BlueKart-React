@@ -16,7 +16,7 @@ export const getAllProductsHandler = function () {
 
 /**
  * This handler handles gets all products in the db.
- * send GET Request at /api/user/products/:productId
+ * send GET Request at /api/products/:productId
  * */
 
 export const getProductHandler = function (schema, request) {

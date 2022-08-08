@@ -1,17 +1,17 @@
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
     faXmark, 
     faHouse, 
     faCartShopping, 
     faRightToBracket,
-    faHeart 
+    faHeart,
+    faUser,
+    faUserPlus
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { useSidebar } from "../../common/context/SidebarContext";
-import { useAuth } from "../../common/context/AuthenticationContext";
-import { LogoutBtn } from "../Logout/LogoutBtn";
-import { useUserData } from "../../common/context/UserDataContext";
+import { useSidebar, useAuth, useUserData } from "common/context";
+import { LogoutBtn } from "../index";
 
 const SideBar = () => {
     const { displaySideBar, setDisplaySideBar } = useSidebar();
@@ -39,11 +39,9 @@ const SideBar = () => {
                     <div className="sidebar-item-txt">Shop Now</div>
                 </Link>
 
-                <LogoutBtn display={isUserAuthenticated ? true: false} />
-                
-                {!isUserAuthenticated && <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/login">
-                    <FontAwesomeIcon icon={faRightToBracket} className="sidebar-icon" />
-                    <div className="sidebar-item-txt">Login</div>
+                { isUserAuthenticated && <Link className="sidebar-item centered-flex-row-container space-S rounded-med" to="/profile">
+                    <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
+                    <div className="sidebar-item-txt">My Profile</div>
                 </Link> }
 
                 <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/wishList">
@@ -55,6 +53,18 @@ const SideBar = () => {
                     <FontAwesomeIcon icon={faCartShopping} className="sidebar-icon" />
                     <div className="sidebar-item-txt">Cart ({ cartItemsCount })</div>
                 </Link>
+
+                <LogoutBtn display={isUserAuthenticated ? true: false} />
+
+                {!isUserAuthenticated && <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/signup">
+                    <FontAwesomeIcon icon={faUserPlus} className="sidebar-icon" />
+                    <div className="sidebar-item-txt">Sign Up</div>
+                </Link> }
+                
+                {!isUserAuthenticated && <Link className="sidebar-item sidebar-item-actions centered-flex-row-container space-S rounded-med" to="/login">
+                    <FontAwesomeIcon icon={faRightToBracket} className="sidebar-icon" />
+                    <div className="sidebar-item-txt">Login</div>
+                </Link> }
             </nav>
         </aside>
     );

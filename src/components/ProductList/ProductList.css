@@ -15,12 +15,20 @@
 /* ==================> Products comp <======================= */
 .products {
     margin: 2rem 2rem 5rem 0;
+    position: relative;
 }
 
-.products .searchbar {
-    width: 95%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.spinning-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.search-header {
+    font-size: 2rem;
+    text-align: center;
 }
 
 .product-cards {
@@ -103,12 +111,6 @@
 
     .product-grid-3-column {
         justify-items: center;
-    }
-
-    .products .searchbar {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .productList-empty-container {

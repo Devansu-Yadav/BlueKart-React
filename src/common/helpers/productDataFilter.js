@@ -3,7 +3,7 @@ import {
     SELECT_FASHION_CATEGORY, 
     SELECT_SPORTS_CATEGORY,
     SELECT_ACCESSORIES_CATEGORY
-} from "../constants";
+} from "common/constants";
 
 const getMinPriceOfProducts = (productData) => {
     return productData.reduce((minPrice, currProduct) => currProduct.price < minPrice ? currProduct.price: minPrice, Number.MAX_SAFE_INTEGER);
@@ -11,6 +11,10 @@ const getMinPriceOfProducts = (productData) => {
 
 const getMaxPriceOfProducts = (productData) => {
     return productData.reduce((maxPrice, currProduct) => currProduct.price > maxPrice ? currProduct.price: maxPrice, Number.MIN_SAFE_INTEGER);
+}
+
+const getProductData = (productId, products) => {
+    return products.find(product => product._id === productId);
 }
 
 const filterProductsInPriceRange = (productsData, minRange, maxRange) => {
@@ -72,7 +76,8 @@ const fetchCategoryLabel = (categoryName) => {
 
 export { 
     getMinPriceOfProducts, 
-    getMaxPriceOfProducts, 
+    getMaxPriceOfProducts,
+    getProductData,
     filterProductsInPriceRange, 
     filterProductsByRating, 
     filterProductsByCategory,

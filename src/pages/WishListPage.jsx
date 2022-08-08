@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
-import { NavBar } from "../components/NavBar/NavBar";
-import { SideBar } from "../components/SideBar/SideBar";
-import { Footer } from "../components/Footer/Footer";
-import { WishList } from "../components/WishList/WishList";
-import { useSidebar } from "../common/context/SidebarContext";
-import "../styles/WishListPage.css";
+import { useEffect } from "react";
+import { useSidebar } from "common/context";
+import { NavBar, SideBar, Footer, WishList } from "components";
+import "styles/WishListPage.css";
 
 const WishListPage = () => {
     const { displaySideBar } = useSidebar();

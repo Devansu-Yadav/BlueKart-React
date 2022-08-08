@@ -1,17 +1,18 @@
 import "./navbar.css";
+import { useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faCartShopping, 
     faArrowRightToBracket, 
     faHeart,
-    faBars 
+    faBars,
+    faCircleUser,
+    faUser,
+    faUserPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { SearchBar } from "../SearchBar/SearchBar";
-import { LogoutBtn } from "../Logout/LogoutBtn";
-import { useSidebar } from "../../common/context/SidebarContext";
-import { useAuth } from "../../common/context/AuthenticationContext";
-import { useUserData } from "../../common/context/UserDataContext";
+import { SearchBar, LogoutBtn } from "../index";
+import { useSidebar, useAuth, useUserData } from "common/context";
 
 const NavBar = ({ linkActive }) => {
     const { setDisplaySideBar } = useSidebar();
@@ -19,6 +20,7 @@ const NavBar = ({ linkActive }) => {
     const { userData } = useUserData();
     const wishListItemsCount = userData.wishList.length;
     const cartItemsCount = userData.cart.length;
+    const userMenuRef = useRef(null);
 
     return (
     <nav className="navbar flex-row-container shadow-md">
@@ -36,12 +38,32 @@ const NavBar = ({ linkActive }) => {
             <SearchBar className={{ position: "searchbar-nav" }}/>
 
             <div className="nav-icons centered-flex-row-container">
-                <LogoutBtn display={isUserAuthenticated ? true: false} />
+                <div className={`nav-submenu-item centered-flex-col-container ${linkActive === "profile" ? "link-active" : "" }`} 
+                onClick={() => userMenuRef.current.classList.toggle("show-menu")} >
+                    <div className="user-profile-avatar centered-flex-col-container">
+                        <FontAwesomeIcon icon={faCircleUser} className="space-XS profile-icon" />
+                    </div>
+                    <p className={`${ linkActive === "profile" ? "link-active-hover" : "" }`}>User</p>
 
-                {!isUserAuthenticated && <Link className={`nav-icon-item centered-flex-col-container ${ linkActive === "login" ? "link-active": "" }`} to="/login">
-                    <FontAwesomeIcon icon={faArrowRightToBracket} className="nav-icon-margin"/>
-                    <p className={`${ linkActive === "login" ? "link-active-hover": "" }`}>Login</p>
-                </Link> }
+                    <div className="nav-dropdown-menu" ref={userMenuRef}>
+                        { isUserAuthenticated && <Link className={`nav-icon-item flex-row-container ${ linkActive === "profile" ? "link-active": "" }`} to="/account">
+                            <FontAwesomeIcon icon={faUser} className="nav-icon-margin"/>
+                            <div className={`${ linkActive === "profile" ? "link-active-hover": "" }`}>Profile</div>
+                        </Link>}
+
+                        <LogoutBtn display={isUserAuthenticated ? true: false} />
+                        
+                        {!isUserAuthenticated && <Link className={`nav-icon-item flex-row-container ${ linkActive === "signup" ? "link-active": "" }`} to="/signup">
+                            <FontAwesomeIcon icon={faUserPlus} className="nav-icon-margin"/>
+                            <div className={`${ linkActive === "signup" ? "link-active-hover": "" }`}>Sign Up</div>
+                        </Link> }
+
+                        {!isUserAuthenticated && <Link className={`nav-icon-item flex-row-container ${ linkActive === "login" ? "link-active": "" }`} to="/login">
+                            <FontAwesomeIcon icon={faArrowRightToBracket} className="nav-icon-margin"/>
+                            <div className={`${ linkActive === "login" ? "link-active-hover": "" }`}>Login</div>
+                        </Link> }
+                    </div>
+                </div>
 
                 <Link className={`nav-icon-item centered-flex-col-container ${linkActive === "wishList" ? "link-active" : "" }`} to="/wishList">
                     <div className="wishList-badge space-XS">

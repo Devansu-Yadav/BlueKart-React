@@ -1,12 +1,13 @@
 import { useState, useReducer, useEffect, useContext, createContext } from "react";
-import { useProductsData } from "../context/ProductsDataContext";
+import { useProductsData } from "./index";
 import { 
     filterProductsInPriceRange, 
     filterProductsByRating,
     filterProductsByCategory,
     sortProductsFilter, 
-    outOfStockFilter 
-} from "../helpers/productDataFilter";
+    outOfStockFilter,
+    useSearchProducts
+} from "common/helpers";
 
 import { 
     FOUR_STAR_AND_ABOVE, 
@@ -35,6 +36,7 @@ import {
 const ProductPriceFilterContext = createContext({ 
     priceRange: { minRange: 0, maxRange: 0}, 
     categoryFilter: { Electronics: true, Fashion: true, Sports: true, Accessories: true },
+    filteredProductData: [],
     clearProductFilters: () => {},
     setPriceRange: () => {}, 
     ratingsFilterDispatch: () => {}, 
@@ -47,6 +49,7 @@ const useProductPriceFilter = () => useContext(ProductPriceFilterContext);
 
 const ProductPriceFilterProvider = ({ children }) => {
     const { productsData, productPriceRange } = useProductsData();
+    const { searchedProducts } = useSearchProducts();
 
     const ratingsFilterReducer = (state, action) => {
         switch(action.ratingType) {
@@ -181,7 +184,6 @@ const ProductPriceFilterProvider = ({ children }) => {
         }
     }
 
-    const products = JSON.parse(JSON.stringify(productsData));
     const [filteredProductData, setFilteredProductData] = useState([]);
     const [ratingsFilter, ratingsFilterDispatch] = useReducer(ratingsFilterReducer, {
         ratings: 1.0
@@ -243,7 +245,7 @@ const ProductPriceFilterProvider = ({ children }) => {
     // UseEffect to do side effect i.e Filtering and sorting data
     useEffect(() => {
         // Price Range Filter
-        const priceRangeFilteredData = JSON.parse(JSON.stringify(filterProductsInPriceRange(products, priceRange.minRange, priceRange.maxRange)));
+        const priceRangeFilteredData = JSON.parse(JSON.stringify(filterProductsInPriceRange(searchedProducts, priceRange.minRange, priceRange.maxRange)));
         
         // Filtering products by category
         const filteredProductsByCategory = filterProductsByCategory(priceRangeFilteredData, categoryFilter);
@@ -258,7 +260,7 @@ const ProductPriceFilterProvider = ({ children }) => {
         const includeOutOfStockProducts = outOfStockFilter(sortedProductsByFilter, includeOutOfStock.shouldIncludeOutOfStock);
 
         setFilteredProductData(includeOutOfStockProducts);
-    }, [priceRange, ratingsFilter, categoryFilter, sortByFilter, includeOutOfStock]);
+    }, [searchedProducts, priceRange, ratingsFilter, categoryFilter, sortByFilter, includeOutOfStock]);
 
     return (
         <ProductPriceFilterContext.Provider value={{ 

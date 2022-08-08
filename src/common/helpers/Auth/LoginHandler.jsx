@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useFormError } from "../../context/Form-Error-Context";
-import { useAuth } from "../../context/AuthenticationContext";
-import { useUserData } from "../../context/UserDataContext";
-import { getCartData } from "../CartService";
-import { getWishListData } from "../WishListService";
-import { USER_LOGIN } from "../../constants";
+import { toast } from "react-toastify";
+import { useFormError, useAuth, useUserData } from "common/context";
+import { getCartData, getWishListData } from "../index";
+import { USER_LOGIN } from "common/constants";
 
 const useLoginHandler = () => {
     const initialFormState = {
@@ -24,8 +22,9 @@ const useLoginHandler = () => {
         event.preventDefault();
         try {
             const loginResponse = await axios.post("/api/auth/login", loginFormData);
+            console.log(loginResponse);
             if(loginResponse.status === 200) {
-                console.log("Login successful!!");
+                toast.success("Login successful!");
                 const { foundUser, encodedToken } = loginResponse.data;
                 navigate("/productList");
                 localStorage.setItem("authToken", encodedToken);
@@ -42,6 +41,7 @@ const useLoginHandler = () => {
             }
         } catch(err) {
             console.log("loginHandler: Error in Login", err.response.data.errors[0]);
+            toast.error("Error Logging in!");
             setIsFormError(true);
             setFormDataErr(err.response.data.errors[0]);
         }
